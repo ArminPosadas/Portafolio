@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://u87bs8o77s8v" path="res://Fonts/VCR_OSD_MONO_1.001.ttf" id="3_df05h"]
 [ext_resource type="Texture2D" uid="uid://bbjn3hb50bdh1" path="res://Sprites/Logo.png" id="5_8um5k"]
 [ext_resource type="Texture2D" uid="uid://cw8upj865edac" path="res://Sprites/LowBar-Highlight.png" id="5_xim88"]
+[ext_resource type="Script" uid="uid://csbbdahh8yqau" path="res://Scripts/MMButton.gd" id="7_xim88"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ghw46"]
 texture = ExtResource("2_8saeu")
@@ -52,6 +53,7 @@ texture = ExtResource("1_tt5f1")
 expand_mode = 1
 
 [node name="LowBar" type="Panel" parent="." unique_id=737782414]
+z_index = 2
 offset_top = 647.0
 offset_right = 1280.0
 offset_bottom = 720.0
@@ -59,7 +61,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxTexture_ghw46")
 
-[node name="Button" type="Button" parent="LowBar" unique_id=1157718472]
+[node name="Button" type="Button" parent="LowBar" unique_id=1157718472 node_paths=PackedStringArray("menu_bar")]
 layout_mode = 0
 offset_left = 21.0
 offset_top = 5.0
@@ -74,6 +76,9 @@ text = "MENU"
 icon = ExtResource("5_8um5k")
 alignment = 2
 expand_icon = true
+script = ExtResource("7_xim88")
+menu_bar = NodePath("../../MenuBar")
+raised_position = Vector2(0, 312)
 
 [node name="TimePanel" type="Panel" parent="LowBar" unique_id=374147186]
 layout_mode = 0
@@ -109,14 +114,15 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="MenuBar" type="Panel" parent="." unique_id=690145025]
+z_index = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_top = 311.0
+offset_top = 720.0
 offset_right = 289.0
-offset_bottom = 647.0
+offset_bottom = 1056.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
@@ -177,3 +183,5 @@ text = "Contacts"
 icon = ExtResource("5_8um5k")
 alignment = 2
 expand_icon = true
+
+[connection signal="pressed" from="LowBar/Button" to="LowBar/Button" method="_on_pressed"]
