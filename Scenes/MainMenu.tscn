@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dyqups7e1qmx8"]
 
+[ext_resource type="Script" uid="uid://c2xx3rhbgy58b" path="res://Scenes/main_menu.gd" id="1_cmrfp"]
 [ext_resource type="Texture2D" uid="uid://cs3gqb7pwd44b" path="res://Sprites/windows-7-background-imfecqv6cnsicbx4.jpg" id="1_tt5f1"]
 [ext_resource type="Texture2D" uid="uid://bulgoa0rxiwna" path="res://Sprites/LowBar-2.png" id="2_8saeu"]
 [ext_resource type="Texture2D" uid="uid://beht8luq4mawy" path="res://Sprites/LowBar.png" id="2_853f1"]
@@ -7,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bbjn3hb50bdh1" path="res://Sprites/Logo.png" id="5_8um5k"]
 [ext_resource type="Texture2D" uid="uid://cw8upj865edac" path="res://Sprites/LowBar-Highlight.png" id="5_xim88"]
 [ext_resource type="Script" uid="uid://csbbdahh8yqau" path="res://Scripts/MMButton.gd" id="7_xim88"]
+[ext_resource type="Texture2D" uid="uid://qaoqkk6sla2l" path="res://Sprites/Sprite-0001.png" id="8_koqhg"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ghw46"]
 texture = ExtResource("2_8saeu")
@@ -45,6 +47,7 @@ texture_margin_right = 2.0
 texture_margin_bottom = 2.0
 
 [node name="Node2D" type="Node2D" unique_id=116451422]
+script = ExtResource("1_cmrfp")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1089136446]
 offset_right = 1280.0
@@ -184,4 +187,18 @@ icon = ExtResource("5_8um5k")
 alignment = 2
 expand_icon = true
 
+[node name="Window" type="Window" parent="." unique_id=1915719860]
+oversampling_override = 1.0
+title = "About me"
+initial_position = 1
+size = Vector2i(400, 400)
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Window" unique_id=325823256]
+position = Vector2(49.5, 49)
+scale = Vector2(3.03125, 2.875)
+texture = ExtResource("8_koqhg")
+
 [connection signal="pressed" from="LowBar/Button" to="LowBar/Button" method="_on_pressed"]
+[connection signal="pressed" from="MenuBar/Panel2/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="close_requested" from="Window" to="." method="_on_window_close_requested"]
