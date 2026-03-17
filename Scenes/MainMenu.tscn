@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://dyqups7e1qmx8"]
 
-[ext_resource type="Script" uid="uid://c2xx3rhbgy58b" path="res://Scenes/main_menu.gd" id="1_cmrfp"]
 [ext_resource type="Texture2D" uid="uid://cs3gqb7pwd44b" path="res://Sprites/windows-7-background-imfecqv6cnsicbx4.jpg" id="1_tt5f1"]
 [ext_resource type="Texture2D" uid="uid://bulgoa0rxiwna" path="res://Sprites/LowBar-2.png" id="2_8saeu"]
 [ext_resource type="Texture2D" uid="uid://beht8luq4mawy" path="res://Sprites/LowBar.png" id="2_853f1"]
@@ -8,7 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://bbjn3hb50bdh1" path="res://Sprites/Logo.png" id="5_8um5k"]
 [ext_resource type="Texture2D" uid="uid://cw8upj865edac" path="res://Sprites/LowBar-Highlight.png" id="5_xim88"]
 [ext_resource type="Script" uid="uid://csbbdahh8yqau" path="res://Scripts/MMButton.gd" id="7_xim88"]
-[ext_resource type="Texture2D" uid="uid://qaoqkk6sla2l" path="res://Sprites/Sprite-0001.png" id="8_koqhg"]
+[ext_resource type="Script" uid="uid://dwbyi8immmwln" path="res://Scripts/ButtonPopUp.gd" id="8_cmrfp"]
+[ext_resource type="Texture2D" uid="uid://dihki0l6fgfbe" path="res://Sprites/Currículum hoja de vida laboral profesional formal azul.png" id="9_cmrfp"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ghw46"]
 texture = ExtResource("2_8saeu")
@@ -47,19 +47,18 @@ texture_margin_right = 2.0
 texture_margin_bottom = 2.0
 
 [node name="Node2D" type="Node2D" unique_id=116451422]
-script = ExtResource("1_cmrfp")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1089136446]
-offset_right = 1280.0
-offset_bottom = 720.0
+offset_right = 1920.0
+offset_bottom = 967.0
 texture = ExtResource("1_tt5f1")
 expand_mode = 1
 
 [node name="LowBar" type="Panel" parent="." unique_id=737782414]
 z_index = 2
-offset_top = 647.0
-offset_right = 1280.0
-offset_bottom = 720.0
+offset_top = 846.0
+offset_right = 1920.0
+offset_bottom = 967.0
 size_flags_horizontal = 3
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxTexture_ghw46")
@@ -67,9 +66,9 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_ghw46")
 [node name="Button" type="Button" parent="LowBar" unique_id=1157718472 node_paths=PackedStringArray("menu_bar")]
 layout_mode = 0
 offset_left = 21.0
-offset_top = 5.0
-offset_right = 204.0
-offset_bottom = 69.0
+offset_top = 15.0
+offset_right = 339.0
+offset_bottom = 107.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_df05h")
 theme_override_font_sizes/font_size = 48
@@ -77,18 +76,17 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_8saeu")
 theme_override_styles/hover = SubResource("StyleBoxTexture_koqhg")
 text = "MENU"
 icon = ExtResource("5_8um5k")
-alignment = 2
 expand_icon = true
 script = ExtResource("7_xim88")
 menu_bar = NodePath("../../MenuBar")
-raised_position = Vector2(0, 312)
+raised_position = Vector2(0, 408)
 
 [node name="TimePanel" type="Panel" parent="LowBar" unique_id=374147186]
 layout_mode = 0
-offset_left = 1129.0
-offset_top = 5.0
-offset_right = 1190.0168
-offset_bottom = 69.0
+offset_left = 1667.0
+offset_top = 19.0
+offset_right = 1767.4236
+offset_bottom = 99.0
 scale = Vector2(2.360005, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="LowBar/TimePanel" unique_id=1878514198]
@@ -123,9 +121,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_top = 720.0
-offset_right = 289.0
-offset_bottom = 1056.0
+offset_top = 967.0
+offset_right = 380.0
+offset_bottom = 1405.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
@@ -150,7 +148,7 @@ grow_vertical = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="Button" type="Button" parent="MenuBar/Panel2/VBoxContainer" unique_id=2035130555]
+[node name="Button" type="Button" parent="MenuBar/Panel2/VBoxContainer" unique_id=2035130555 node_paths=PackedStringArray("popup_window")]
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -160,8 +158,23 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_8saeu")
 theme_override_styles/hover = SubResource("StyleBoxTexture_koqhg")
 text = "About me"
 icon = ExtResource("5_8um5k")
-alignment = 2
 expand_icon = true
+script = ExtResource("8_cmrfp")
+popup_window = NodePath("../../../../AboutMe")
+
+[node name="Button4" type="Button" parent="MenuBar/Panel2/VBoxContainer" unique_id=435507307 node_paths=PackedStringArray("popup_window")]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_df05h")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxTexture_8saeu")
+theme_override_styles/hover = SubResource("StyleBoxTexture_koqhg")
+text = "CV"
+icon = ExtResource("5_8um5k")
+expand_icon = true
+script = ExtResource("8_cmrfp")
+popup_window = NodePath("../../../../CV")
 
 [node name="Button2" type="Button" parent="MenuBar/Panel2/VBoxContainer" unique_id=1337806333]
 layout_mode = 2
@@ -172,10 +185,9 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_8saeu")
 theme_override_styles/hover = SubResource("StyleBoxTexture_koqhg")
 text = "Proyects"
 icon = ExtResource("5_8um5k")
-alignment = 2
 expand_icon = true
 
-[node name="Button3" type="Button" parent="MenuBar/Panel2/VBoxContainer" unique_id=1462626529]
+[node name="Button3" type="Button" parent="MenuBar/Panel2/VBoxContainer" unique_id=1462626529 node_paths=PackedStringArray("popup_window")]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_df05h")
@@ -184,21 +196,50 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_8saeu")
 theme_override_styles/hover = SubResource("StyleBoxTexture_koqhg")
 text = "Contacts"
 icon = ExtResource("5_8um5k")
-alignment = 2
 expand_icon = true
+script = ExtResource("8_cmrfp")
+popup_window = NodePath("../../../../Contacts")
 
-[node name="Window" type="Window" parent="." unique_id=1915719860]
+[node name="CV" type="Window" parent="." unique_id=1915719860]
+oversampling_override = 1.0
+title = "Curriculum Vitae"
+initial_position = 1
+size = Vector2i(800, 900)
+visible = false
+
+[node name="Panel" type="Panel" parent="CV" unique_id=1627285386]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="CV/Panel" unique_id=325823256]
+position = Vector2(398.25003, 449.74997)
+scale = Vector2(0.5200647, 0.45047525)
+texture = ExtResource("9_cmrfp")
+
+[node name="AboutMe" type="Window" parent="." unique_id=1830636092]
 oversampling_override = 1.0
 title = "About me"
 initial_position = 1
-size = Vector2i(400, 400)
+size = Vector2i(800, 900)
 visible = false
 
-[node name="Sprite2D" type="Sprite2D" parent="Window" unique_id=325823256]
-position = Vector2(49.5, 49)
-scale = Vector2(3.03125, 2.875)
-texture = ExtResource("8_koqhg")
+[node name="Contacts" type="Window" parent="." unique_id=851157228]
+oversampling_override = 1.0
+title = "Contact Me"
+initial_position = 1
+size = Vector2i(800, 900)
+visible = false
 
 [connection signal="pressed" from="LowBar/Button" to="LowBar/Button" method="_on_pressed"]
-[connection signal="pressed" from="MenuBar/Panel2/VBoxContainer/Button" to="." method="_on_button_pressed"]
-[connection signal="close_requested" from="Window" to="." method="_on_window_close_requested"]
+[connection signal="pressed" from="MenuBar/Panel2/VBoxContainer/Button" to="MenuBar/Panel2/VBoxContainer/Button" method="_on_pressed"]
+[connection signal="pressed" from="MenuBar/Panel2/VBoxContainer/Button4" to="MenuBar/Panel2/VBoxContainer/Button4" method="_on_pressed"]
+[connection signal="pressed" from="MenuBar/Panel2/VBoxContainer/Button3" to="MenuBar/Panel2/VBoxContainer/Button3" method="_on_pressed"]
+[connection signal="close_requested" from="CV" to="." method="_on_window_close_requested"]
+[connection signal="close_requested" from="CV" to="MenuBar/Panel2/VBoxContainer/Button" method="_on_cv_close_requested"]
+[connection signal="close_requested" from="AboutMe" to="." method="_on_window_close_requested"]
+[connection signal="close_requested" from="AboutMe" to="MenuBar/Panel2/VBoxContainer/Button" method="_on_cv_close_requested"]
+[connection signal="close_requested" from="Contacts" to="." method="_on_window_close_requested"]
+[connection signal="close_requested" from="Contacts" to="MenuBar/Panel2/VBoxContainer/Button" method="_on_cv_close_requested"]
