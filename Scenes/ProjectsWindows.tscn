@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://qmsds738ryp3"]
+
+[node name="Window" type="Window" unique_id=2115528764]
+oversampling_override = 1.0
+title = "Projects"
+position = Vector2i(0, 36)
+size = Vector2i(800, 800)
+
+[node name="Panel" type="Panel" parent="." unique_id=473936565]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

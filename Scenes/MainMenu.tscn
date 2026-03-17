@@ -207,17 +207,21 @@ initial_position = 1
 size = Vector2i(800, 900)
 visible = false
 
-[node name="Panel" type="Panel" parent="CV" unique_id=1627285386]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="TextureRect" type="TextureRect" parent="CV" unique_id=2141205977]
+anchors_preset = -1
+anchor_left = -0.465625
+anchor_top = -0.6105555
+anchor_right = 1.465625
+anchor_bottom = 1.6105555
+offset_left = 372.5
+offset_top = 549.5
+offset_right = -372.5
+offset_bottom = -549.5
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Sprite2D" type="Sprite2D" parent="CV/Panel" unique_id=325823256]
-position = Vector2(398.25003, 449.74997)
-scale = Vector2(0.5200647, 0.45047525)
 texture = ExtResource("9_cmrfp")
+expand_mode = 4
+metadata/_edit_use_anchors_ = true
 
 [node name="AboutMe" type="Window" parent="." unique_id=1830636092]
 oversampling_override = 1.0
@@ -239,7 +243,5 @@ visible = false
 [connection signal="pressed" from="MenuBar/Panel2/VBoxContainer/Button3" to="MenuBar/Panel2/VBoxContainer/Button3" method="_on_pressed"]
 [connection signal="close_requested" from="CV" to="." method="_on_window_close_requested"]
 [connection signal="close_requested" from="CV" to="MenuBar/Panel2/VBoxContainer/Button" method="_on_cv_close_requested"]
-[connection signal="close_requested" from="AboutMe" to="." method="_on_window_close_requested"]
-[connection signal="close_requested" from="AboutMe" to="MenuBar/Panel2/VBoxContainer/Button" method="_on_cv_close_requested"]
-[connection signal="close_requested" from="Contacts" to="." method="_on_window_close_requested"]
-[connection signal="close_requested" from="Contacts" to="MenuBar/Panel2/VBoxContainer/Button" method="_on_cv_close_requested"]
+[connection signal="close_requested" from="AboutMe" to="MenuBar/Panel2/VBoxContainer/Button" method="_on_about_me_close_requested"]
+[connection signal="close_requested" from="Contacts" to="MenuBar/Panel2/VBoxContainer/Button3" method="_on_contacts_close_requested"]
