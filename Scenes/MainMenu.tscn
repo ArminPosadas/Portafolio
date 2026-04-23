@@ -1,14 +1,17 @@
 [gd_scene format=3 uid="uid://dyqups7e1qmx8"]
 
-[ext_resource type="Texture2D" uid="uid://cs3gqb7pwd44b" path="res://Sprites/windows-7-background-imfecqv6cnsicbx4.jpg" id="1_tt5f1"]
-[ext_resource type="Texture2D" uid="uid://bulgoa0rxiwna" path="res://Sprites/LowBar-2.png" id="2_8saeu"]
-[ext_resource type="Texture2D" uid="uid://beht8luq4mawy" path="res://Sprites/LowBar.png" id="2_853f1"]
+[ext_resource type="Script" uid="uid://ujmyarvot6rf" path="res://Scripts/InventLink.gd" id="1_fh7cp"]
+[ext_resource type="Texture2D" uid="uid://cs3gqb7pwd44b" path="res://Assets/Sprites/windows-7-background-imfecqv6cnsicbx4.jpg" id="1_tt5f1"]
+[ext_resource type="Texture2D" uid="uid://bulgoa0rxiwna" path="res://Assets/Sprites/LowBar-2.png" id="2_8saeu"]
+[ext_resource type="Texture2D" uid="uid://beht8luq4mawy" path="res://Assets/Sprites/LowBar.png" id="2_853f1"]
 [ext_resource type="FontFile" uid="uid://u87bs8o77s8v" path="res://Fonts/VCR_OSD_MONO_1.001.ttf" id="3_df05h"]
-[ext_resource type="Texture2D" uid="uid://bbjn3hb50bdh1" path="res://Sprites/Logo.png" id="5_8um5k"]
-[ext_resource type="Texture2D" uid="uid://cw8upj865edac" path="res://Sprites/LowBar-Highlight.png" id="5_xim88"]
+[ext_resource type="Texture2D" uid="uid://bbjn3hb50bdh1" path="res://Assets/Sprites/Logo.png" id="5_8um5k"]
+[ext_resource type="Texture2D" uid="uid://cw8upj865edac" path="res://Assets/Sprites/LowBar-Highlight.png" id="5_xim88"]
 [ext_resource type="Script" uid="uid://csbbdahh8yqau" path="res://Scripts/MMButton.gd" id="7_xim88"]
 [ext_resource type="Script" uid="uid://dwbyi8immmwln" path="res://Scripts/ButtonPopUp.gd" id="8_cmrfp"]
-[ext_resource type="Texture2D" uid="uid://dihki0l6fgfbe" path="res://Sprites/Currículum hoja de vida laboral profesional formal azul.png" id="9_cmrfp"]
+[ext_resource type="Texture2D" uid="uid://dihki0l6fgfbe" path="res://Assets/Sprites/Currículum hoja de vida laboral profesional formal azul.png" id="9_cmrfp"]
+[ext_resource type="Script" uid="uid://ddl2aqh0uk2go" path="res://Scripts/NextScene.gd" id="9_loo7a"]
+[ext_resource type="Script" uid="uid://ctvpyxvbkdgmv" path="res://Scripts/LinkData.gd" id="12_rrcx7"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ghw46"]
 texture = ExtResource("2_8saeu")
@@ -47,6 +50,10 @@ texture_margin_right = 2.0
 texture_margin_bottom = 2.0
 
 [node name="Node2D" type="Node2D" unique_id=116451422]
+script = ExtResource("1_fh7cp")
+
+[node name="LinkData" type="Node" parent="." unique_id=1304741527]
+script = ExtResource("12_rrcx7")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1089136446]
 offset_right = 1920.0
@@ -148,7 +155,7 @@ grow_vertical = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="Button" type="Button" parent="MenuBar/Panel2/VBoxContainer" unique_id=2035130555 node_paths=PackedStringArray("popup_window")]
+[node name="AbMe" type="Button" parent="MenuBar/Panel2/VBoxContainer" unique_id=2035130555 node_paths=PackedStringArray("popup_window")]
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -162,7 +169,7 @@ expand_icon = true
 script = ExtResource("8_cmrfp")
 popup_window = NodePath("../../../../AboutMe")
 
-[node name="Button4" type="Button" parent="MenuBar/Panel2/VBoxContainer" unique_id=435507307 node_paths=PackedStringArray("popup_window")]
+[node name="CV" type="Button" parent="MenuBar/Panel2/VBoxContainer" unique_id=435507307 node_paths=PackedStringArray("popup_window")]
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -176,7 +183,7 @@ expand_icon = true
 script = ExtResource("8_cmrfp")
 popup_window = NodePath("../../../../CV")
 
-[node name="Button2" type="Button" parent="MenuBar/Panel2/VBoxContainer" unique_id=1337806333]
+[node name="P" type="Button" parent="MenuBar/Panel2/VBoxContainer" unique_id=1337806333]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_df05h")
@@ -186,8 +193,9 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_koqhg")
 text = "Proyects"
 icon = ExtResource("5_8um5k")
 expand_icon = true
+script = ExtResource("9_loo7a")
 
-[node name="Button3" type="Button" parent="MenuBar/Panel2/VBoxContainer" unique_id=1462626529 node_paths=PackedStringArray("popup_window")]
+[node name="C" type="Button" parent="MenuBar/Panel2/VBoxContainer" unique_id=1462626529 node_paths=PackedStringArray("popup_window")]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_df05h")
@@ -209,16 +217,14 @@ visible = false
 
 [node name="TextureRect" type="TextureRect" parent="CV" unique_id=2141205977]
 anchors_preset = -1
-anchor_left = -0.465625
-anchor_top = -0.6105555
-anchor_right = 1.465625
-anchor_bottom = 1.6105555
-offset_left = 372.5
-offset_top = 549.5
-offset_right = -372.5
-offset_bottom = -549.5
+anchor_top = -0.1388889
+anchor_bottom = -0.1388889
+offset_right = 800.0
+offset_bottom = 1025.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 texture = ExtResource("9_cmrfp")
 expand_mode = 4
 metadata/_edit_use_anchors_ = true
@@ -237,11 +243,50 @@ initial_position = 1
 size = Vector2i(800, 900)
 visible = false
 
+[node name="ColorRect" type="ColorRect" parent="Contacts" unique_id=1714564355]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Contacts" unique_id=1412967865]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 77.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 54
+text = "My contacts"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Contacts" unique_id=794097647]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 167.0
+offset_top = 151.0
+offset_right = -183.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Contacts/MarginContainer" unique_id=1591327331]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="Contacts/MarginContainer/ScrollContainer" unique_id=557218976]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 150
+theme_override_constants/v_separation = 150
+columns = 2
+
 [connection signal="pressed" from="LowBar/Button" to="LowBar/Button" method="_on_pressed"]
-[connection signal="pressed" from="MenuBar/Panel2/VBoxContainer/Button" to="MenuBar/Panel2/VBoxContainer/Button" method="_on_pressed"]
-[connection signal="pressed" from="MenuBar/Panel2/VBoxContainer/Button4" to="MenuBar/Panel2/VBoxContainer/Button4" method="_on_pressed"]
-[connection signal="pressed" from="MenuBar/Panel2/VBoxContainer/Button3" to="MenuBar/Panel2/VBoxContainer/Button3" method="_on_pressed"]
-[connection signal="close_requested" from="CV" to="." method="_on_window_close_requested"]
-[connection signal="close_requested" from="CV" to="MenuBar/Panel2/VBoxContainer/Button" method="_on_cv_close_requested"]
-[connection signal="close_requested" from="AboutMe" to="MenuBar/Panel2/VBoxContainer/Button" method="_on_about_me_close_requested"]
-[connection signal="close_requested" from="Contacts" to="MenuBar/Panel2/VBoxContainer/Button3" method="_on_contacts_close_requested"]
+[connection signal="pressed" from="MenuBar/Panel2/VBoxContainer/AbMe" to="MenuBar/Panel2/VBoxContainer/AbMe" method="_on_pressed"]
+[connection signal="pressed" from="MenuBar/Panel2/VBoxContainer/CV" to="MenuBar/Panel2/VBoxContainer/CV" method="_on_pressed"]
+[connection signal="pressed" from="MenuBar/Panel2/VBoxContainer/P" to="MenuBar/Panel2/VBoxContainer/P" method="_on_pressed"]
+[connection signal="pressed" from="MenuBar/Panel2/VBoxContainer/C" to="MenuBar/Panel2/VBoxContainer/C" method="_on_pressed"]
+[connection signal="close_requested" from="CV" to="MenuBar/Panel2/VBoxContainer/CV" method="_on_cv_close_requested"]
+[connection signal="close_requested" from="AboutMe" to="MenuBar/Panel2/VBoxContainer/AbMe" method="_on_about_me_close_requested"]
+[connection signal="close_requested" from="Contacts" to="MenuBar/Panel2/VBoxContainer/C" method="_on_contacts_close_requested"]

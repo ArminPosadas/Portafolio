@@ -1,0 +1,56 @@
+{
+  "1": {
+	"Name": "Godot",
+	"Description": "Weapon",
+	"Type": "Godot",
+	"Genre": "MainHand"
+  },
+  "2": {
+	"Name": "Unreal",
+	"Description": "Weapon",
+	"Type": "Sword",
+	"Genre": "MainHand"
+  },
+  "3": {
+	"Name": "Unity",
+	"Description": "Weapon",
+	"Type": "Sword",
+	"Genre": "MainHand"
+  },
+  "4": {
+	"Name": "Unity",
+	"Description": "Weapon",
+	"Type": "Sword",
+	"Genre": "MainHand"
+  },
+  "5": {
+	"Name": "Unreal",
+	"Description": "Weapon",
+	"Type": "Sword",
+	"Genre": "MainHand"
+  },
+  "6": {
+	"Name": "Godot",
+	"Description": "Weapon",
+	"Type": "Sword",
+	"Genre": "MainHand"
+  },
+  "7": {
+	"Name": "Godot",
+	"Description": "Weapon",
+	"Type": "Sword",
+	"Genre": "MainHand"
+  },
+  "8": {
+	"Name": "Unity",
+	"Description": "Weapon",
+	"Type": "Sword",
+	"Genre": "MainHand"
+  },
+  "9": {
+	"Name": "Unreal",
+	"Description": "Weapon",
+	"Type": "Sword",
+	"Genre": "MainHand"
+  }
+}

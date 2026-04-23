@@ -1,14 +1,96 @@
 [gd_scene format=3 uid="uid://qmsds738ryp3"]
 
-[node name="Window" type="Window" unique_id=2115528764]
-oversampling_override = 1.0
-title = "Projects"
-position = Vector2i(0, 36)
-size = Vector2i(800, 800)
+[ext_resource type="Script" uid="uid://b5uw7oebdsher" path="res://Scripts/Inventory.gd" id="1_164yw"]
+[ext_resource type="Texture2D" uid="uid://cw8upj865edac" path="res://Assets/Sprites/LowBar-Highlight.png" id="2_05cl8"]
+[ext_resource type="Script" uid="uid://bqi3jbseq5jkd" path="res://Singletons/GameData.gd" id="2_164yw"]
+[ext_resource type="Texture2D" uid="uid://bulgoa0rxiwna" path="res://Assets/Sprites/LowBar-2.png" id="4_y4q6q"]
+[ext_resource type="Texture2D" uid="uid://bbjn3hb50bdh1" path="res://Assets/Sprites/Logo.png" id="5_21aso"]
+[ext_resource type="Script" uid="uid://dytxmxnci61xe" path="res://Scripts/button.gd" id="6_21aso"]
 
-[node name="Panel" type="Panel" parent="." unique_id=473936565]
+[sub_resource type="Theme" id="Theme_05cl8"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_164yw"]
+texture = ExtResource("2_05cl8")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+
+[node name="ProjectsComp" type="Control" unique_id=832354694]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_164yw")
+metadata/_edit_use_anchors_ = true
+
+[node name="Game Data" type="Node" parent="." unique_id=1470877258]
+script = ExtResource("2_164yw")
+
+[node name="Projects" type="MarginContainer" parent="." unique_id=679590532]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 400.0
+offset_top = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Projects" unique_id=852649143]
+layout_mode = 2
+
+[node name="CurrentTags" type="HBoxContainer" parent="Projects/VBoxContainer" unique_id=1013975352]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme = SubResource("Theme_05cl8")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Projects/VBoxContainer" unique_id=756936080]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="Projects/VBoxContainer/ScrollContainer" unique_id=912959865]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 250
+theme_override_constants/v_separation = 250
+columns = 6
+
+[node name="Panel3" type="Panel" parent="." unique_id=1838451409]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 75.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_164yw")
+
+[node name="TextureRect" type="TextureRect" parent="Panel3" unique_id=403474418]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1845.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_y4q6q")
+
+[node name="Button" type="Button" parent="Panel3/TextureRect" unique_id=1592458925]
+layout_mode = 0
+offset_right = 75.0
+offset_bottom = 75.0
+icon = ExtResource("5_21aso")
+flat = true
+icon_alignment = 1
+script = ExtResource("6_21aso")
+
+[node name="Panel2" type="Panel" parent="." unique_id=710020148]
+layout_mode = 0
+offset_top = 75.0
+offset_right = 400.0
+offset_bottom = 967.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_164yw")
+
+[connection signal="pressed" from="Panel3/TextureRect/Button" to="Panel3/TextureRect/Button" method="_on_pressed"]
