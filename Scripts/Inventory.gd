@@ -3,7 +3,9 @@ extends Control
 var template_inv_slot = preload("res://Objects/Slot1.tscn")
 var item_data = {}
 
-@onready var gridcontainer = get_node("Projects/VBoxContainer/ScrollContainer/GridContainer")
+@onready var godotcontainer = get_node("Projects/VBoxContainer/GodotContainer/GridGodot")
+@onready var unitycontainer = get_node("Projects/VBoxContainer/UnityContainer/GridUnity")
+@onready var unrealcontainer = get_node("Projects/VBoxContainer/UnrealContainer/GridUnreal")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -61,6 +63,36 @@ func create_inventory_slots():
 		inv_slot_new.set_meta("item_id", item_id)
 		inv_slot_new.set_meta("item_data", current_item)
 		
-		gridcontainer.add_child(inv_slot_new, true)
+		# Determine which container to add the slot to based on the Type
+		match item_type:
+			"Godot":
+				godotcontainer.add_child(inv_slot_new, true)
+				print("Added ", item_name, " to Godot container")
+			"Unity":
+				unitycontainer.add_child(inv_slot_new, true)
+				print("Added ", item_name, " to Unity container")
+			"Unreal":
+				unrealcontainer.add_child(inv_slot_new, true)
+				print("Added ", item_name, " to Unreal container")
+			_:
+				print("Unknown type '", item_type, "' for item: ", item_name)
+				# Optional: add to a default container or just log the error
 	
-	print("Created ", item_data.size(), " inventory slots")
+	print("Created inventory slots - Godot: ", godotcontainer.get_child_count(), 
+		  ", Unity: ", unitycontainer.get_child_count(), 
+		  ", Unreal: ", unrealcontainer.get_child_count())
+
+
+func _on_godot_toggle_pressed() -> void:
+		var godot_panel = get_node("Projects/VBoxContainer/GodotContainer")
+		godot_panel.visible = !godot_panel.visible
+
+
+func _on_unity_toggle_pressed() -> void:
+		var unity_panel = get_node("Projects/VBoxContainer/UnityContainer")
+		unity_panel.visible = !unity_panel.visible
+
+
+func _on_unreal_toggle_pressed() -> void:
+		var unreal_panel = get_node("Projects/VBoxContainer/UnrealContainer")
+		unreal_panel.visible = !unreal_panel.visible

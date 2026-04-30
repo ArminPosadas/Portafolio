@@ -39,7 +39,7 @@ func create_inventory_slots():
 			link_button.text = item_name
 			link_button.uri = item_url  # For URL property in LinkButton
 		
-		# Set the icon if you have an Icon node
+		# Set the icon texture
 		var icon_path = "res://Assets/Icon_Items/" + item_icon + ".png"
 		var icon_texture = null
 		

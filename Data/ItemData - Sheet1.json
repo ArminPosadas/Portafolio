@@ -8,49 +8,121 @@
   "2": {
 	"Name": "Unreal",
 	"Description": "Weapon",
-	"Type": "Sword",
+	"Type": "Unreal",
 	"Genre": "MainHand"
   },
   "3": {
 	"Name": "Unity",
 	"Description": "Weapon",
-	"Type": "Sword",
+	"Type": "Unity",
 	"Genre": "MainHand"
   },
   "4": {
 	"Name": "Unity",
 	"Description": "Weapon",
-	"Type": "Sword",
+	"Type": "Unity",
 	"Genre": "MainHand"
   },
   "5": {
 	"Name": "Unreal",
 	"Description": "Weapon",
-	"Type": "Sword",
+	"Type": "Unreal",
 	"Genre": "MainHand"
   },
   "6": {
 	"Name": "Godot",
 	"Description": "Weapon",
-	"Type": "Sword",
+	"Type": "Godot",
 	"Genre": "MainHand"
   },
   "7": {
 	"Name": "Godot",
 	"Description": "Weapon",
-	"Type": "Sword",
+	"Type": "Godot",
 	"Genre": "MainHand"
   },
   "8": {
 	"Name": "Unity",
 	"Description": "Weapon",
-	"Type": "Sword",
+	"Type": "Unity",
 	"Genre": "MainHand"
   },
   "9": {
 	"Name": "Unreal",
 	"Description": "Weapon",
-	"Type": "Sword",
+	"Type": "Unreal",
+	"Genre": "MainHand"
+  },
+  "10": {
+	"Name": "Godot",
+	"Description": "Weapon",
+	"Type": "Godot",
+	"Genre": "MainHand"
+  },
+  "11": {
+	"Name": "Unreal",
+	"Description": "Weapon",
+	"Type": "Unreal",
+	"Genre": "MainHand"
+  },
+  "12": {
+	"Name": "Unity",
+	"Description": "Weapon",
+	"Type": "Unity",
+	"Genre": "MainHand"
+  },
+  "13": {
+	"Name": "Unity",
+	"Description": "Weapon",
+	"Type": "Unity",
+	"Genre": "MainHand"
+  },
+  "14": {
+	"Name": "Unreal",
+	"Description": "Weapon",
+	"Type": "Unreal",
+	"Genre": "MainHand"
+  },
+  "15": {
+	"Name": "Godot",
+	"Description": "Weapon",
+	"Type": "Godot",
+	"Genre": "MainHand"
+  },
+  "16": {
+	"Name": "Godot",
+	"Description": "Weapon",
+	"Type": "Godot",
+	"Genre": "MainHand"
+  },
+  "17": {
+	"Name": "Unity",
+	"Description": "Weapon",
+	"Type": "Unity",
+	"Genre": "MainHand"
+  },
+  "18": {
+	"Name": "Unreal",
+	"Description": "Weapon",
+	"Type": "Unreal",
+	"Genre": "MainHand"
+  },
+  "19": {
+	"Name": "Godot",
+	"Description": "Weapon",
+	"Type": "Godot",
+	"Genre": "MainHand"
+  },
+  "20": {
+	"Name": "Unreal",
+	"Description": "Weapon",
+	"Type": "Unreal",
+	"Genre": "MainHand"
+  },
+  "21": {
+	"Name": "Unity",
+	"Description": "Weapon",
+	"Type": "Unity",
 	"Genre": "MainHand"
   }
 }

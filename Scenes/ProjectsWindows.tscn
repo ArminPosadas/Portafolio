@@ -7,8 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://bbjn3hb50bdh1" path="res://Assets/Sprites/Logo.png" id="5_21aso"]
 [ext_resource type="Script" uid="uid://dytxmxnci61xe" path="res://Scripts/button.gd" id="6_21aso"]
 
-[sub_resource type="Theme" id="Theme_05cl8"]
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_164yw"]
 texture = ExtResource("2_05cl8")
 texture_margin_left = 2.0
@@ -35,29 +33,75 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 400.0
-offset_top = 75.0
+offset_top = 134.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Projects" unique_id=852649143]
 layout_mode = 2
 
-[node name="CurrentTags" type="HBoxContainer" parent="Projects/VBoxContainer" unique_id=1013975352]
-custom_minimum_size = Vector2(0, 80)
-layout_mode = 2
-theme = SubResource("Theme_05cl8")
-
-[node name="ScrollContainer" type="ScrollContainer" parent="Projects/VBoxContainer" unique_id=756936080]
+[node name="GodotContainer" type="ScrollContainer" parent="Projects/VBoxContainer" unique_id=756936080]
 layout_mode = 2
 size_flags_vertical = 3
+draw_focus_border = true
 
-[node name="GridContainer" type="GridContainer" parent="Projects/VBoxContainer/ScrollContainer" unique_id=912959865]
+[node name="GridGodot" type="GridContainer" parent="Projects/VBoxContainer/GodotContainer" unique_id=912959865]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/h_separation = 250
 theme_override_constants/v_separation = 250
-columns = 6
+columns = 10
+
+[node name="UnityContainer" type="ScrollContainer" parent="Projects/VBoxContainer" unique_id=964143257]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GridUnity" type="GridContainer" parent="Projects/VBoxContainer/UnityContainer" unique_id=1310688675]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 250
+theme_override_constants/v_separation = 250
+columns = 10
+
+[node name="UnrealContainer" type="ScrollContainer" parent="Projects/VBoxContainer" unique_id=1620645638]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GridUnreal" type="GridContainer" parent="Projects/VBoxContainer/UnrealContainer" unique_id=1296216929]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 250
+theme_override_constants/v_separation = 250
+columns = 10
+
+[node name="Buttons" type="MarginContainer" parent="." unique_id=2045001844]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 75.0
+offset_right = 1920.0
+offset_bottom = 134.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Buttons" unique_id=1908681759]
+layout_mode = 2
+alignment = 1
+
+[node name="GodotToggle" type="Button" parent="Buttons/HBoxContainer" unique_id=898180061]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Hide Godot projects"
+
+[node name="UnityToggle" type="Button" parent="Buttons/HBoxContainer" unique_id=1202765215]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Hide Unity projects"
+
+[node name="UnrealToggle" type="Button" parent="Buttons/HBoxContainer" unique_id=1423713054]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Hide Unreal projects"
 
 [node name="Panel3" type="Panel" parent="." unique_id=1838451409]
 layout_mode = 1
@@ -93,4 +137,8 @@ offset_right = 400.0
 offset_bottom = 967.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_164yw")
 
+[connection signal="pressed" from="Buttons/HBoxContainer/GodotToggle" to="." method="_on_godot_toggle_pressed"]
+[connection signal="pressed" from="Buttons/HBoxContainer/UnityToggle" to="." method="_on_unity_toggle_pressed"]
+[connection signal="pressed" from="Buttons/HBoxContainer/UnrealToggle" to="." method="_on_unreal_toggle_pressed"]
+[connection signal="toggled" from="Buttons/HBoxContainer/UnrealToggle" to="." method="_on_unreal_toggle_toggled"]
 [connection signal="pressed" from="Panel3/TextureRect/Button" to="Panel3/TextureRect/Button" method="_on_pressed"]
