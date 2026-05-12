@@ -32,3 +32,4 @@ offset_right = 160.0
 offset_bottom = 154.0
 text = "Description"
 horizontal_alignment = 1
+autowrap_mode = 3

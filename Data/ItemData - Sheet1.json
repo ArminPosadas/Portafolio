@@ -1,128 +1,50 @@
 {
   "1": {
-	"Name": "Godot",
-	"Description": "Weapon",
-	"Type": "Godot",
-	"Genre": "MainHand"
+	"Name": "Unreal",
+	"Description": "versatile dialogue system for Unreal",
+	"Type": "Unreal",
+	"Genres": ["3DRPG"]
   },
   "2": {
-	"Name": "Unreal",
-	"Description": "Weapon",
-	"Type": "Unreal",
-	"Genre": "MainHand"
+	"Name": "Unity",
+	"Description": "AI behaviour for a fighting game",
+	"Type": "Unity",
+	"Genres": ["2DFighting", "AIBehaviour"]
   },
   "3": {
-	"Name": "Unity",
-	"Description": "Weapon",
-	"Type": "Unity",
-	"Genre": "MainHand"
+	"Name": "Web",
+	"Description": "Use of GLTF for adding 3d models to websites",
+	"Type": "Web",
+	"Genres": ["WebPage"]
   },
   "4": {
 	"Name": "Unity",
-	"Description": "Weapon",
+	"Description": "Colaborative work between 3 people to make different puzzles",
 	"Type": "Unity",
-	"Genre": "MainHand"
+	"Genres": ["3DPuzzle"]
   },
   "5": {
-	"Name": "Unreal",
-	"Description": "Weapon",
-	"Type": "Unreal",
-	"Genre": "MainHand"
+	"Name": "Unity",
+	"Description": "Collection of various VFX made in unity",
+	"Type": "Unity",
+	"Genres": ["VFX"]
   },
   "6": {
-	"Name": "Godot",
-	"Description": "Weapon",
-	"Type": "Godot",
-	"Genre": "MainHand"
+	"Name": "Unreal",
+	"Description": "Colaborative work with a team on a tower defense",
+	"Type": "Unreal",
+	"Genres": ["TowerDefense"]
   },
   "7": {
-	"Name": "Godot",
-	"Description": "Weapon",
-	"Type": "Godot",
-	"Genre": "MainHand"
+	"Name": "Unity",
+	"Description": "Behaviour Tree for a virtual pet with it's own schedule and needs",
+	"Type": "Unity",
+	"Genres": ["AIBehaviour", "LifeSim"]
   },
   "8": {
-	"Name": "Unity",
-	"Description": "Weapon",
-	"Type": "Unity",
-	"Genre": "MainHand"
-  },
-  "9": {
-	"Name": "Unreal",
-	"Description": "Weapon",
-	"Type": "Unreal",
-	"Genre": "MainHand"
-  },
-  "10": {
 	"Name": "Godot",
-	"Description": "Weapon",
+	"Description": "Interactive WebPage made in Godot",
 	"Type": "Godot",
-	"Genre": "MainHand"
-  },
-  "11": {
-	"Name": "Unreal",
-	"Description": "Weapon",
-	"Type": "Unreal",
-	"Genre": "MainHand"
-  },
-  "12": {
-	"Name": "Unity",
-	"Description": "Weapon",
-	"Type": "Unity",
-	"Genre": "MainHand"
-  },
-  "13": {
-	"Name": "Unity",
-	"Description": "Weapon",
-	"Type": "Unity",
-	"Genre": "MainHand"
-  },
-  "14": {
-	"Name": "Unreal",
-	"Description": "Weapon",
-	"Type": "Unreal",
-	"Genre": "MainHand"
-  },
-  "15": {
-	"Name": "Godot",
-	"Description": "Weapon",
-	"Type": "Godot",
-	"Genre": "MainHand"
-  },
-  "16": {
-	"Name": "Godot",
-	"Description": "Weapon",
-	"Type": "Godot",
-	"Genre": "MainHand"
-  },
-  "17": {
-	"Name": "Unity",
-	"Description": "Weapon",
-	"Type": "Unity",
-	"Genre": "MainHand"
-  },
-  "18": {
-	"Name": "Unreal",
-	"Description": "Weapon",
-	"Type": "Unreal",
-	"Genre": "MainHand"
-  },
-  "19": {
-	"Name": "Godot",
-	"Description": "Weapon",
-	"Type": "Godot",
-	"Genre": "MainHand"
-  },
-  "20": {
-	"Name": "Unreal",
-	"Description": "Weapon",
-	"Type": "Unreal",
-	"Genre": "MainHand"
-  },
-  "21": {
-	"Name": "Unity",
-	"Description": "Weapon",
-	"Type": "Unity",
-	"Genre": "MainHand"
+	"Genres": ["WebPage"]
   }
 }

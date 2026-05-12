@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bulgoa0rxiwna" path="res://Assets/Sprites/LowBar-2.png" id="4_y4q6q"]
 [ext_resource type="Texture2D" uid="uid://bbjn3hb50bdh1" path="res://Assets/Sprites/Logo.png" id="5_21aso"]
 [ext_resource type="Script" uid="uid://dytxmxnci61xe" path="res://Scripts/button.gd" id="6_21aso"]
+[ext_resource type="VideoStream" uid="uid://d2vuql8v25d75" path="res://Assets/Video/EDIT-PosadasArmin-VideoPresentacion.ogv" id="7_aap42"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_164yw"]
 texture = ExtResource("2_05cl8")
@@ -27,20 +28,23 @@ metadata/_edit_use_anchors_ = true
 [node name="Game Data" type="Node" parent="." unique_id=1470877258]
 script = ExtResource("2_164yw")
 
-[node name="Projects" type="MarginContainer" parent="." unique_id=679590532]
+[node name="Projects" type="ScrollContainer" parent="." unique_id=1077229267]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 400.0
+offset_left = 284.0
 offset_top = 134.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Projects" unique_id=852649143]
+[node name="VBoxContainer" type="VBoxContainer" parent="Projects" unique_id=574617138]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="GodotContainer" type="ScrollContainer" parent="Projects/VBoxContainer" unique_id=756936080]
+custom_minimum_size = Vector2(0, 300)
 layout_mode = 2
 size_flags_vertical = 3
 draw_focus_border = true
@@ -54,6 +58,7 @@ theme_override_constants/v_separation = 250
 columns = 10
 
 [node name="UnityContainer" type="ScrollContainer" parent="Projects/VBoxContainer" unique_id=964143257]
+custom_minimum_size = Vector2(0, 300)
 layout_mode = 2
 size_flags_vertical = 3
 
@@ -66,6 +71,7 @@ theme_override_constants/v_separation = 250
 columns = 10
 
 [node name="UnrealContainer" type="ScrollContainer" parent="Projects/VBoxContainer" unique_id=1620645638]
+custom_minimum_size = Vector2(0, 300)
 layout_mode = 2
 size_flags_vertical = 3
 
@@ -77,9 +83,22 @@ theme_override_constants/h_separation = 250
 theme_override_constants/v_separation = 250
 columns = 10
 
+[node name="WebContainer" type="ScrollContainer" parent="Projects/VBoxContainer" unique_id=1916845468]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GridWeb" type="GridContainer" parent="Projects/VBoxContainer/WebContainer" unique_id=12068266]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 250
+theme_override_constants/v_separation = 250
+columns = 10
+
 [node name="Buttons" type="MarginContainer" parent="." unique_id=2045001844]
 layout_mode = 0
-offset_left = 400.0
+offset_left = 284.0
 offset_top = 75.0
 offset_right = 1920.0
 offset_bottom = 134.0
@@ -103,7 +122,12 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Hide Unreal projects"
 
-[node name="Panel3" type="Panel" parent="." unique_id=1838451409]
+[node name="WebToggle" type="Button" parent="Buttons/HBoxContainer" unique_id=413003764]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Hide Web projects"
+
+[node name="HeaderPanel" type="Panel" parent="." unique_id=1838451409]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -111,7 +135,7 @@ offset_bottom = 75.0
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_164yw")
 
-[node name="TextureRect" type="TextureRect" parent="Panel3" unique_id=403474418]
+[node name="TextureRect" type="TextureRect" parent="HeaderPanel" unique_id=403474418]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -121,7 +145,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_y4q6q")
 
-[node name="Button" type="Button" parent="Panel3/TextureRect" unique_id=1592458925]
+[node name="Button" type="Button" parent="HeaderPanel/TextureRect" unique_id=1592458925]
 layout_mode = 0
 offset_right = 75.0
 offset_bottom = 75.0
@@ -130,15 +154,170 @@ flat = true
 icon_alignment = 1
 script = ExtResource("6_21aso")
 
-[node name="Panel2" type="Panel" parent="." unique_id=710020148]
+[node name="BGenrePanel" type="Panel" parent="." unique_id=710020148]
+layout_mode = 0
+offset_top = 134.0
+offset_right = 284.0
+offset_bottom = 965.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_164yw")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="BGenrePanel" unique_id=712003665]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 19.0
+offset_top = 21.0
+offset_right = -17.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BGenrePanel/ScrollContainer" unique_id=2051298142]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="TowerDefense" type="Button" parent="BGenrePanel/ScrollContainer/VBoxContainer" unique_id=1643881967]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 21
+text = "Tower Defense"
+
+[node name="AIBehaviour" type="Button" parent="BGenrePanel/ScrollContainer/VBoxContainer" unique_id=618401010]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 21
+text = "AI Behaviour"
+
+[node name="VFX" type="Button" parent="BGenrePanel/ScrollContainer/VBoxContainer" unique_id=1208788875]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 21
+text = "VFX
+"
+
+[node name="WebPage" type="Button" parent="BGenrePanel/ScrollContainer/VBoxContainer" unique_id=776209301]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 21
+text = "Web Page
+
+"
+
+[node name="2DFighting" type="Button" parent="BGenrePanel/ScrollContainer/VBoxContainer" unique_id=1889147796]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 21
+text = "2D Fighting
+
+"
+
+[node name="3DPuzzle" type="Button" parent="BGenrePanel/ScrollContainer/VBoxContainer" unique_id=1631181559]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 21
+text = "3D Puzzle
+
+
+"
+
+[node name="3DRPG" type="Button" parent="BGenrePanel/ScrollContainer/VBoxContainer" unique_id=717386514]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 21
+text = "3D RPG
+
+
+
+"
+
+[node name="LifeSim" type="Button" parent="BGenrePanel/ScrollContainer/VBoxContainer" unique_id=2082991745]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 21
+text = "Life Simulator
+
+
+"
+
+[node name="InfoPanel" type="Panel" parent="." unique_id=435651258]
+layout_mode = 0
+offset_left = 1308.0
+offset_top = 134.0
+offset_right = 1920.0
+offset_bottom = 965.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_164yw")
+
+[node name="Descripcion" type="Panel" parent="InfoPanel" unique_id=1664058769]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 595.0
+offset_bottom = 370.0
+
+[node name="Label" type="Label" parent="InfoPanel/Descripcion" unique_id=2136360131]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Video" type="Panel" parent="InfoPanel" unique_id=1196165693]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 421.0
+offset_right = 595.0
+offset_bottom = 771.0
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="InfoPanel/Video" unique_id=1550106903]
+layout_mode = 1
+offset_right = 1280.0
+offset_bottom = 720.0
+scale = Vector2(0.44931105, 0.4859356)
+stream = ExtResource("7_aap42")
+autoplay = true
+loop = true
+
+[node name="SortPanel" type="Panel" parent="." unique_id=1334710917]
 layout_mode = 0
 offset_top = 75.0
-offset_right = 400.0
-offset_bottom = 967.0
+offset_right = 284.0
+offset_bottom = 134.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_164yw")
+
+[node name="Label" type="Label" parent="SortPanel" unique_id=1150902594]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 38
+text = "Sort By"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="Buttons/HBoxContainer/GodotToggle" to="." method="_on_godot_toggle_pressed"]
 [connection signal="pressed" from="Buttons/HBoxContainer/UnityToggle" to="." method="_on_unity_toggle_pressed"]
 [connection signal="pressed" from="Buttons/HBoxContainer/UnrealToggle" to="." method="_on_unreal_toggle_pressed"]
-[connection signal="toggled" from="Buttons/HBoxContainer/UnrealToggle" to="." method="_on_unreal_toggle_toggled"]
-[connection signal="pressed" from="Panel3/TextureRect/Button" to="Panel3/TextureRect/Button" method="_on_pressed"]
+[connection signal="pressed" from="Buttons/HBoxContainer/WebToggle" to="." method="_on_web_toggle_pressed"]
+[connection signal="pressed" from="HeaderPanel/TextureRect/Button" to="HeaderPanel/TextureRect/Button" method="_on_pressed"]
+[connection signal="pressed" from="BGenrePanel/ScrollContainer/VBoxContainer/TowerDefense" to="." method="_on_tower_defense_button_pressed"]
+[connection signal="pressed" from="BGenrePanel/ScrollContainer/VBoxContainer/AIBehaviour" to="." method="_on_ai_behaviour_button_pressed"]
+[connection signal="pressed" from="BGenrePanel/ScrollContainer/VBoxContainer/VFX" to="." method="_on_vfx_button_pressed"]
+[connection signal="pressed" from="BGenrePanel/ScrollContainer/VBoxContainer/WebPage" to="." method="_on_web_page_button_pressed"]
+[connection signal="pressed" from="BGenrePanel/ScrollContainer/VBoxContainer/2DFighting" to="." method="_on_2d_fighting_button_pressed"]
+[connection signal="pressed" from="BGenrePanel/ScrollContainer/VBoxContainer/3DPuzzle" to="." method="_on_3d_puzzle_button_pressed"]
+[connection signal="pressed" from="BGenrePanel/ScrollContainer/VBoxContainer/3DRPG" to="." method="_on_3d_rpg_button_pressed"]
+[connection signal="pressed" from="BGenrePanel/ScrollContainer/VBoxContainer/LifeSim" to="." method="_on_life_sim_button_pressed"]
