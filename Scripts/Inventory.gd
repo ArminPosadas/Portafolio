@@ -1,257 +1,281 @@
 extends Control
 
-var template_inv_slot = preload("res://Objects/Slot1.tscn")
-var item_data = {}
-var current_filter = ""
+const ITEM_DATA_PATH = "res://Data/ItemData - Sheet1.json"
+const ICON_PATH = "res://Assets/Icon_Items/"
+const VIDEO_PATH = "res://Assets/Video/"
 
-@onready var godotcontainer = get_node("Projects/VBoxContainer/GodotContainer/GridGodot")
-@onready var unitycontainer = get_node("Projects/VBoxContainer/UnityContainer/GridUnity")
-@onready var unrealcontainer = get_node("Projects/VBoxContainer/UnrealContainer/GridUnreal")
-@onready var webcontainer = get_node("Projects/VBoxContainer/WebContainer/GridWeb")
+@export var template_inv_slot: PackedScene = preload("res://Objects/Slot1.tscn")
 
-# References to the panel containers (the parent containers with the toggle buttons)
-@onready var godot_panel = get_node("Projects/VBoxContainer/GodotContainer")
-@onready var unity_panel = get_node("Projects/VBoxContainer/UnityContainer")
-@onready var unreal_panel = get_node("Projects/VBoxContainer/UnrealContainer")
-@onready var web_panel = get_node("Projects/VBoxContainer/WebContainer")
+var item_data: Dictionary = {}
+var current_filter: String = ""
 
-# Dictionary to store genre button references
-var genre_buttons = {
-	"TowerDefense": null,
-	"AI Behaviour": null,
-	"VFX": null,
-	"WebPage": null,
-	"2DFighting": null,
-	"3DPuzzle": null,
-	"3DRPG": null,
-	"LifeSim": null
+# UI References - Using @onready with safer get_node patterns
+@onready var info_panel: Panel = $InfoPanel
+@onready var description_label: Label = $InfoPanel/Descripcion/Label
+@onready var video_player: VideoStreamPlayer = $InfoPanel/Video/VideoStreamPlayer
+@onready var animation_player: AnimationPlayer = $InfoPanel/AnimationPlayer
+
+# Container references
+@onready var containers: Dictionary = {
+	"Godot": $Projects/VBoxContainer/GodotContainer/GridGodot,
+	"Unity": $Projects/VBoxContainer/UnityContainer/GridUnity,
+	"Unreal": $Projects/VBoxContainer/UnrealContainer/GridUnreal,
+	"Web": $Projects/VBoxContainer/WebContainer/GridWeb
 }
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
+@onready var panels: Dictionary = {
+	"Godot": $Projects/VBoxContainer/GodotContainer,
+	"Unity": $Projects/VBoxContainer/UnityContainer,
+	"Unreal": $Projects/VBoxContainer/UnrealContainer,
+	"Web": $Projects/VBoxContainer/WebContainer
+}
+
+func _ready() -> void:
 	load_item_data()
 	create_inventory_slots()
-	
 	show_all_items()
+	info_panel.visible = false
 
-func load_item_data():
-	var json_file = FileAccess.open("res://Data/ItemData - Sheet1.json", FileAccess.READ)
-	if json_file:
-		var json_text = json_file.get_as_text()
-		var json_parse = JSON.new()
-		var parse_result = json_parse.parse(json_text)
-		
-		if parse_result == OK:
-			item_data = json_parse.data
-			print("Loaded ", item_data.size(), " items successfully")
-		else:
-			print("Error parsing JSON: ", json_parse.get_error_message())
+func load_item_data() -> void:
+	var json_file = FileAccess.open(ITEM_DATA_PATH, FileAccess.READ)
+	if not json_file:
+		push_error("Failed to open JSON file: ", ITEM_DATA_PATH)
+		return
+	
+	var json_text = json_file.get_as_text()
+	var json_parse = JSON.new()
+	var parse_result = json_parse.parse(json_text)
+	
+	if parse_result == OK:
+		item_data = json_parse.data
+		print("Loaded ", item_data.size(), " items successfully")
 	else:
-		print("Failed to open JSON file")
+		push_error("Error parsing JSON: ", json_parse.get_error_message())
 
-# Direct button connection signals
-func _on_tower_defense_button_pressed():
+func show_item_details(item_id: String, item_info: Dictionary) -> void:
+	if not info_panel:
+		return
+	
+	info_panel.visible = true
+	
+	if animation_player and animation_player.has_animation("hidden"):
+		# Store pending data and play animation
+		animation_player.set_meta("pending_item_id", item_id)
+		animation_player.set_meta("pending_item_info", item_info)
+		
+		if not animation_player.is_connected("animation_finished", Callable(self, "_on_hidden_animation_finished")):
+			animation_player.connect("animation_finished", Callable(self, "_on_hidden_animation_finished"))
+		
+		animation_player.play("hidden")
+	else:
+		update_info_panel_content(item_id, item_info)
+
+func _on_hidden_animation_finished(anim_name: String) -> void:
+	if anim_name != "hidden":
+		return
+	
+	var item_id = animation_player.get_meta("pending_item_id", "")
+	var item_info = animation_player.get_meta("pending_item_info", {})
+	
+	if item_info.is_empty():
+		return
+	
+	update_info_panel_content(item_id, item_info)
+	animation_player.play_backwards("hidden")
+	
+	# Clean up metadata
+	animation_player.remove_meta("pending_item_id")
+	animation_player.remove_meta("pending_item_info")
+
+func update_info_panel_content(_item_id: String, item_info: Dictionary) -> void:
+	if description_label:
+		description_label.text = item_info.get("Description", "No description available")
+	
+	if not video_player:
+		return
+	
+	video_player.stop()
+	var video_filename = item_info.get("Video", "")
+	
+	if video_filename.is_empty():
+		video_player.stream = null
+		return
+	
+	var video_path = VIDEO_PATH + video_filename
+	
+	if ResourceLoader.exists(video_path):
+		video_player.stream = load(video_path)
+		video_player.play()
+	else:
+		push_warning("Video not found: ", video_path)
+		video_player.stream = null
+
+# Genre button handlers
+func _on_tower_defense_button_pressed() -> void:
 	_on_genre_button_pressed("TowerDefense")
 
-func _on_ai_behaviour_button_pressed():
+func _on_ai_behaviour_button_pressed() -> void:
 	_on_genre_button_pressed("AIBehaviour")
 
-func _on_vfx_button_pressed():
+func _on_vfx_button_pressed() -> void:
 	_on_genre_button_pressed("VFX")
 
-func _on_web_page_button_pressed():
+func _on_web_page_button_pressed() -> void:
 	_on_genre_button_pressed("WebPage")
 
-func _on_2d_fighting_button_pressed():
+func _on_2d_fighting_button_pressed() -> void:
 	_on_genre_button_pressed("2DFighting")
 
-func _on_3d_puzzle_button_pressed():
+func _on_3d_puzzle_button_pressed() -> void:
 	_on_genre_button_pressed("3DPuzzle")
 
-func _on_3d_rpg_button_pressed():
+func _on_3d_rpg_button_pressed() -> void:
 	_on_genre_button_pressed("3DRPG")
 
-func _on_life_sim_button_pressed():
+func _on_life_sim_button_pressed() -> void:
 	_on_genre_button_pressed("LifeSim")
 
-# Core filtering logic with visual feedback
-func _on_genre_button_pressed(genre: String):
+func _on_genre_button_pressed(genre: String) -> void:
 	if current_filter == genre:
-		# If clicking the same genre, clear the filter
 		current_filter = ""
 		show_all_items()
-		show_all_panels()  # Show all panels when filter is cleared
+		show_all_panels()
 	else:
-		# Apply new filter
 		current_filter = genre
 		filter_items_by_genre(genre)
-		hide_empty_panels()  # Hide panels that have no visible items
+		hide_empty_panels()
 
-# Show all items (clear filter)
-func show_all_items():
-	show_items_in_container(godotcontainer, true)
-	show_items_in_container(unitycontainer, true)
-	show_items_in_container(unrealcontainer, true)
-	show_items_in_container(webcontainer, true)
+func show_all_items() -> void:
+	for container in containers.values():
+		show_items_in_container(container, true)
 
-# Show all panels (used when clearing filter)
-func show_all_panels():
-	godot_panel.visible = true
-	unity_panel.visible = true
-	unreal_panel.visible = true
-	web_panel.visible = true
+func show_all_panels() -> void:
+	for panel in panels.values():
+		panel.visible = true
 
-# Check and hide panels that have no visible items
-func hide_empty_panels():
-	# Check Godot container
-	if godotcontainer.get_child_count() > 0:
+func hide_empty_panels() -> void:
+	for panel_name in panels.keys():
+		var container = containers[panel_name]
+		var panel = panels[panel_name]
+		
+		if container.get_child_count() == 0:
+			panel.visible = false
+			continue
+		
 		var has_visible = false
-		for child in godotcontainer.get_children():
+		for child in container.get_children():
 			if child.visible:
 				has_visible = true
 				break
-		godot_panel.visible = has_visible
-	else:
-		godot_panel.visible = false
-	
-	# Check Unity container
-	if unitycontainer.get_child_count() > 0:
-		var has_visible = false
-		for child in unitycontainer.get_children():
-			if child.visible:
-				has_visible = true
-				break
-		unity_panel.visible = has_visible
-	else:
-		unity_panel.visible = false
-	
-	# Check Unreal container
-	if unrealcontainer.get_child_count() > 0:
-		var has_visible = false
-		for child in unrealcontainer.get_children():
-			if child.visible:
-				has_visible = true
-				break
-		unreal_panel.visible = has_visible
-	else:
-		unreal_panel.visible = false
-	
-	# Check Web container
-	if webcontainer.get_child_count() > 0:
-		var has_visible = false
-		for child in webcontainer.get_children():
-			if child.visible:
-				has_visible = true
-				break
-		web_panel.visible = has_visible
-	else:
-		web_panel.visible = false
+		
+		panel.visible = has_visible
 
-# Filter items by genre
-func filter_items_by_genre(genre: String):
-	# Filter items in each container
-	filter_container_by_genre(godotcontainer, genre)
-	filter_container_by_genre(unitycontainer, genre)
-	filter_container_by_genre(unrealcontainer, genre)
-	filter_container_by_genre(webcontainer, genre)
+func filter_items_by_genre(genre: String) -> void:
+	for container in containers.values():
+		filter_container_by_genre(container, genre)
 
-func filter_container_by_genre(container: GridContainer, genre: String):
+func filter_container_by_genre(container: GridContainer, genre: String) -> void:
 	for child in container.get_children():
 		if child.has_meta("item_data"):
-			var item_genres = child.get_meta("item_data")["Genres"]
-			# Check if the selected genre is in the item's genres array
-			child.visible = (genre in item_genres)
+			var item_genres = child.get_meta("item_data").get("Genres", [])
+			child.visible = genre in item_genres
 
-func show_items_in_container(container: GridContainer, visible: bool):
+func show_items_in_container(container: GridContainer, visible: bool) -> void:
 	for child in container.get_children():
 		child.visible = visible
 
-# Optional: Add a "Show All" button functionality if you have one
-func _on_show_all_button_pressed():
+func _on_show_all_button_pressed() -> void:
 	current_filter = ""
 	show_all_items()
 	show_all_panels()
 
-func create_inventory_slots():
-	# Clear existing containers if needed
+func create_inventory_slots() -> void:
 	clear_containers()
 	
-	# Loop through all items in the loaded JSON data
 	for item_id in item_data.keys():
-		var inv_slot_new = template_inv_slot.instantiate()
+		var inv_slot = template_inv_slot.instantiate()
 		var current_item = item_data[item_id]
+		var item_name = current_item.get("Name", "")
+		var item_type = current_item.get("Type", "")
 		
-		var item_name = current_item["Name"]
-		var item_description = current_item["Description"]
-		var item_type = current_item["Type"]
+		if item_name.is_empty() or item_type.is_empty():
+			push_warning("Item missing required data: ", item_id)
+			continue
 		
-		# Set the icon texture
-		var icon_path = "res://Assets/Icon_Items/" + item_name + ".png"
-		var icon_texture = null
+		setup_slot_icon(inv_slot, item_name)
+		setup_slot_labels(inv_slot, current_item)
+		setup_slot_metadata(inv_slot, item_id, current_item)
+		setup_slot_connection(inv_slot, item_id, current_item)
 		
-		if ResourceLoader.exists(icon_path):
-			icon_texture = load(icon_path)
+		# Add to appropriate container
+		if containers.has(item_type):
+			containers[item_type].add_child(inv_slot, true)
 		else:
-			print("Icon not found: ", icon_path)
-		
-		# Set the icon in the inventory slot
-		if inv_slot_new.has_node("Icon") and icon_texture:
-			inv_slot_new.get_node("Icon").set_texture(icon_texture)
-		
-		# Set the name label
-		if inv_slot_new.has_node("Name"):
-			inv_slot_new.get_node("Name").text = item_name
-		
-		# Set the description label (optional)
-		if inv_slot_new.has_node("Description"):
-			inv_slot_new.get_node("Description").text = item_description
-		
-		# Store item data in the slot for later use
-		inv_slot_new.set_meta("item_id", item_id)
-		inv_slot_new.set_meta("item_data", current_item)
-		
-		# Determine which container to add the slot to based on the Type
-		match item_type:
-			"Godot":
-				godotcontainer.add_child(inv_slot_new, true)
-				print("Added ", item_name, " to Godot container")
-			"Unity":
-				unitycontainer.add_child(inv_slot_new, true)
-				print("Added ", item_name, " to Unity container")
-			"Unreal":
-				unrealcontainer.add_child(inv_slot_new, true)
-				print("Added ", item_name, " to Unreal container")
-			"Web":
-				webcontainer.add_child(inv_slot_new, true)
-				print("Added ", item_name, " to Web container")
-			_:
-				print("Unknown type '", item_type, "' for item: ", item_name)
+			push_warning("Unknown type '%s' for item: %s" % [item_type, item_name])
 	
-	print("Created inventory slots - Godot: ", godotcontainer.get_child_count(), 
-		  ", Unity: ", unitycontainer.get_child_count(), 
-		  ", Unreal: ", unrealcontainer.get_child_count(),
-		  ", Web: ", webcontainer.get_child_count())
+	print_inventory_summary()
 
-func clear_containers():
-	# Clear existing children if you need to refresh
-	for container in [godotcontainer, unitycontainer, unrealcontainer, webcontainer]:
+func setup_slot_icon(slot: Node, item_name: String) -> void:
+	var icon_node = slot.get_node_or_null("Icon")
+	if not icon_node:
+		return
+	
+	var icon_path = ICON_PATH + item_name + ".png"
+	if ResourceLoader.exists(icon_path):
+		icon_node.texture = load(icon_path)
+	else:
+		push_warning("Icon not found: ", icon_path)
+
+func setup_slot_labels(slot: Node, item_info: Dictionary) -> void:
+	var name_label = slot.get_node_or_null("Name")
+	if name_label:
+		name_label.text = item_info.get("Name", "")
+	
+	var summary_label = slot.get_node_or_null("Summary")
+	if summary_label:
+		summary_label.text = item_info.get("Summary", "")
+
+func setup_slot_metadata(slot: Node, item_id: String, item_info: Dictionary) -> void:
+	slot.set_meta("item_id", item_id)
+	slot.set_meta("item_data", item_info)
+
+func setup_slot_connection(slot: Node, item_id: String, item_info: Dictionary) -> void:
+	if slot is BaseButton:
+		slot.pressed.connect(_on_slot_button_pressed.bind(item_id, item_info))
+		return
+	
+	var button = slot.get_node_or_null("Button")
+	if button and button is BaseButton:
+		button.pressed.connect(_on_slot_button_pressed.bind(item_id, item_info))
+
+func _on_slot_button_pressed(item_id: String, item_info: Dictionary) -> void:
+	print("Slot pressed: ", item_info.get("Name", "Unknown"))
+	show_item_details(item_id, item_info)
+
+func clear_containers() -> void:
+	for container in containers.values():
 		for child in container.get_children():
 			child.queue_free()
 
-# Your existing toggle functions (modified to work with the new panel visibility logic)
+func print_inventory_summary() -> void:
+	var summary = []
+	for type_name in containers.keys():
+		summary.append("%s: %d" % [type_name, containers[type_name].get_child_count()])
+	print("Created inventory slots - ", ", ".join(summary))
+
+# Panel toggle handlers
 func _on_godot_toggle_pressed() -> void:
-	# Only toggle if the panel is not hidden by filter
-	if godot_panel.visible:
-		godot_panel.visible = !godot_panel.visible
+	toggle_panel("Godot")
 
 func _on_unity_toggle_pressed() -> void:
-	if unity_panel.visible:
-		unity_panel.visible = !unity_panel.visible
+	toggle_panel("Unity")
 
 func _on_unreal_toggle_pressed() -> void:
-	if unreal_panel.visible:
-		unreal_panel.visible = !unreal_panel.visible
+	toggle_panel("Unreal")
 
 func _on_web_toggle_pressed() -> void:
-	if web_panel.visible:
-		web_panel.visible = !web_panel.visible
+	toggle_panel("Web")
+
+func toggle_panel(panel_name: String) -> void:
+	if panels.has(panel_name):
+		panels[panel_name].visible = not panels[panel_name].visible

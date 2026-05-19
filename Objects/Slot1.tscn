@@ -25,7 +25,7 @@ offset_bottom = 127.0
 text = "Name"
 horizontal_alignment = 1
 
-[node name="Description" type="Label" parent="." unique_id=1321333757]
+[node name="Summary" type="Label" parent="." unique_id=1321333757]
 layout_mode = 0
 offset_top = 131.0
 offset_right = 160.0

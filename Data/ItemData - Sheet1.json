@@ -1,50 +1,66 @@
 {
   "1": {
 	"Name": "Unreal",
-	"Description": "versatile dialogue system for Unreal",
+	"Summary": "versatile dialogue system for Unreal",
 	"Type": "Unreal",
-	"Genres": ["3DRPG"]
+	"Genres": ["3DRPG"],
+	"Description": "A dialogue system i made in UE5 made from scratch using Data Tables to store, edit and short, dialogue, options and choices they can also interact with other Data Tables to short Data Tables per character, it also uses Structures to send that data to blueprints which can be used to give items, save choices or change animations/portraits for RPGs.",
+	"Video": "Example.ogv"
   },
   "2": {
 	"Name": "Unity",
-	"Description": "AI behaviour for a fighting game",
+	"Summary": "AI behaviour for a fighting game",
 	"Type": "Unity",
-	"Genres": ["2DFighting", "AIBehaviour"]
+	"Genres": ["2DFighting", "AIBehaviour"],
+	"Description": "An example of multiple types of AI behaviour for a CPU enemy, made using the  FSM method, having 6 actions to choose from each AI has its own script that just grabs what it needs, AI type 1 is more aggressive up close lowering the difficulty if the player dies a lot, AI type 2 is more defensive increasing the difficulty if the enemy dies a lot and AI type 3 being more evasive from the player while using distance attacks.",
+	"Video": ""
   },
   "3": {
 	"Name": "Web",
-	"Description": "Use of GLTF for adding 3d models to websites",
+	"Summary": "Use of GLTF for adding 3d models to websites",
 	"Type": "Web",
-	"Genres": ["WebPage"]
+	"Genres": ["WebPage"],
+	"Description": "A Web site that uses GLTF to render 3d models with some options to modify its colors, animations as well as the ability to add multiple models to create panoramas.",
+	"Video": ""
   },
   "4": {
 	"Name": "Unity",
-	"Description": "Colaborative work between 3 people to make different puzzles",
+	"Summary": "Colaborative work between 3 people to make different puzzles",
 	"Type": "Unity",
-	"Genres": ["3DPuzzle"]
+	"Genres": ["3DPuzzle"],
+	"Description": "A group project were each team member had to create a simple puzzle on their own, my part consist on moving statues to certain points by giving them a dynamic collision, in the field there’s pressure plates they can only detect the statue objects and will activate or deactivate if the statue is on top of them, once both pressure plates are active they’ll open a door to the next room.",
+	"Video": ""
   },
   "5": {
 	"Name": "Unity",
-	"Description": "Collection of various VFX made in unity",
+	"Summary": "Collection of various VFX made in unity",
 	"Type": "Unity",
-	"Genres": ["VFX"]
+	"Genres": ["VFX"],
+	"Description": "A collection of different VFX made in Unity using ShaderGraphs using methods like distortion with positions to create a Playstation 1 model (Duck model), masks with tilings to create in-game animations (Arrow), Lerps for background and foreground elements (Magnifying glass), Madcaps and Rimlights for perspective effects (Statue with eyes) or a combination of all of them (Planet Earth replica).",
+	"Video": ""
   },
   "6": {
 	"Name": "Unreal",
-	"Description": "Colaborative work with a team on a tower defense",
+	"Summary": "Colaborative work with a team on a tower defense",
 	"Type": "Unreal",
-	"Genres": ["TowerDefense"]
+	"Genres": ["TowerDefense"],
+	"Description": "A group project were my job was to make a store that contains permanent and temporal upgrades through blueprint, each time a wave ends the shop will open automatically, it will generate 3 random Temp upgrades taking the data from a pool that contain effects and graphics for the card, for the Perm upgrades it will generate the same but once you brought one it keeps track of which upgrades you got as well as apply the effect for the tower for the rest of the run.",
+	"Video": ""
   },
   "7": {
 	"Name": "Unity",
-	"Description": "Behaviour Tree for a virtual pet with it's own schedule and needs",
+	"Summary": "Behaviour Tree for a virtual pet with it's own schedule and needs",
 	"Type": "Unity",
-	"Genres": ["AIBehaviour", "LifeSim"]
+	"Genres": ["AIBehaviour", "LifeSim"],
+	"Description": "A virtual pet that has its own schedule, using a behaviour tree, NavMesh and a clock feature, the creature will move randomly through the map using navmesh, the behaviour tree controls it’s actions, if the hunger bar is low it will go to eat, if the sleep bar is low it will go to sleep but under certain hours the creature will do an activity like work from 9 am to 3 pm or sleep from 9 am to 6 am thanks to the clock.",
+	"Video": ""
   },
   "8": {
 	"Name": "Godot",
-	"Description": "Interactive WebPage made in Godot",
+	"Summary": "Interactive WebPage made in Godot",
 	"Type": "Godot",
-	"Genres": ["WebPage"]
+	"Genres": ["WebPage"],
+	"Description": "A Web site made in Godot by exporting the package to HTML5, being able to show multiple windows, having a wide interactive system, easy to use and modify.",
+	"Video": ""
   }
 }
