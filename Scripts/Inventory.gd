@@ -1,40 +1,38 @@
 extends Control
 
-const ITEM_DATA_PATH = "res://Data/ItemData - Sheet1.json"
-const ICON_PATH = "res://Assets/Icon_Items/"
-const VIDEO_PATH = "res://Assets/Video/"
-
 @export var template_inv_slot: PackedScene = preload("res://Objects/Slot1.tscn")
 
 var item_data: Dictionary = {}
 var current_filter: String = ""
 
-# UI References - Using @onready with safer get_node patterns
+const ITEM_DATA_PATH = "res://Data/ItemData - Sheet1.json"
+const ICON_PATH = "res://Assets/Icon_Items/"
+
+# References to sub-systems
 @onready var info_panel: Panel = $InfoPanel
-@onready var description_label: Label = $InfoPanel/Descripcion/Label
-@onready var video_player: VideoStreamPlayer = $InfoPanel/Video/VideoStreamPlayer
-@onready var animation_player: AnimationPlayer = $InfoPanel/AnimationPlayer
+@onready var b_genre_panel: Panel = $BGenrePanel
+@onready var projects_scroll: ScrollContainer = $Projects
 
-# Container references
-@onready var containers: Dictionary = {
-	"Godot": $Projects/VBoxContainer/GodotContainer/GridGodot,
-	"Unity": $Projects/VBoxContainer/UnityContainer/GridUnity,
-	"Unreal": $Projects/VBoxContainer/UnrealContainer/GridUnreal,
-	"Web": $Projects/VBoxContainer/WebContainer/GridWeb
-}
-
-@onready var panels: Dictionary = {
-	"Godot": $Projects/VBoxContainer/GodotContainer,
-	"Unity": $Projects/VBoxContainer/UnityContainer,
-	"Unreal": $Projects/VBoxContainer/UnrealContainer,
-	"Web": $Projects/VBoxContainer/WebContainer
-}
+# Grid references
+var _grids: Dictionary = {}
 
 func _ready() -> void:
+	if b_genre_panel and b_genre_panel.has_signal("filter_changed"):
+		b_genre_panel.filter_changed.connect(_on_filter_changed)
+	if b_genre_panel and b_genre_panel.has_signal("show_all_requested"):
+		b_genre_panel.show_all_requested.connect(_on_show_all_requested)
+	
+	# Get grids reference from BGenrePanel
+	if b_genre_panel and b_genre_panel.has_method("get_all_grids"):
+		_grids = b_genre_panel.get_all_grids()
+	
 	load_item_data()
 	create_inventory_slots()
 	show_all_items()
-	info_panel.visible = false
+	
+	# Info panel starts hidden
+	if info_panel:
+		info_panel.visible = false
 
 func load_item_data() -> void:
 	var json_file = FileAccess.open(ITEM_DATA_PATH, FileAccess.READ)
@@ -51,143 +49,6 @@ func load_item_data() -> void:
 		print("Loaded ", item_data.size(), " items successfully")
 	else:
 		push_error("Error parsing JSON: ", json_parse.get_error_message())
-
-func show_item_details(item_id: String, item_info: Dictionary) -> void:
-	if not info_panel:
-		return
-	
-	info_panel.visible = true
-	
-	if animation_player and animation_player.has_animation("hidden"):
-		# Store pending data and play animation
-		animation_player.set_meta("pending_item_id", item_id)
-		animation_player.set_meta("pending_item_info", item_info)
-		
-		if not animation_player.is_connected("animation_finished", Callable(self, "_on_hidden_animation_finished")):
-			animation_player.connect("animation_finished", Callable(self, "_on_hidden_animation_finished"))
-		
-		animation_player.play("hidden")
-	else:
-		update_info_panel_content(item_id, item_info)
-
-func _on_hidden_animation_finished(anim_name: String) -> void:
-	if anim_name != "hidden":
-		return
-	
-	var item_id = animation_player.get_meta("pending_item_id", "")
-	var item_info = animation_player.get_meta("pending_item_info", {})
-	
-	if item_info.is_empty():
-		return
-	
-	update_info_panel_content(item_id, item_info)
-	animation_player.play_backwards("hidden")
-	
-	# Clean up metadata
-	animation_player.remove_meta("pending_item_id")
-	animation_player.remove_meta("pending_item_info")
-
-func update_info_panel_content(_item_id: String, item_info: Dictionary) -> void:
-	if description_label:
-		description_label.text = item_info.get("Description", "No description available")
-	
-	if not video_player:
-		return
-	
-	video_player.stop()
-	var video_filename = item_info.get("Video", "")
-	
-	if video_filename.is_empty():
-		video_player.stream = null
-		return
-	
-	var video_path = VIDEO_PATH + video_filename
-	
-	if ResourceLoader.exists(video_path):
-		video_player.stream = load(video_path)
-		video_player.play()
-	else:
-		push_warning("Video not found: ", video_path)
-		video_player.stream = null
-
-# Genre button handlers
-func _on_tower_defense_button_pressed() -> void:
-	_on_genre_button_pressed("TowerDefense")
-
-func _on_ai_behaviour_button_pressed() -> void:
-	_on_genre_button_pressed("AIBehaviour")
-
-func _on_vfx_button_pressed() -> void:
-	_on_genre_button_pressed("VFX")
-
-func _on_web_page_button_pressed() -> void:
-	_on_genre_button_pressed("WebPage")
-
-func _on_2d_fighting_button_pressed() -> void:
-	_on_genre_button_pressed("2DFighting")
-
-func _on_3d_puzzle_button_pressed() -> void:
-	_on_genre_button_pressed("3DPuzzle")
-
-func _on_3d_rpg_button_pressed() -> void:
-	_on_genre_button_pressed("3DRPG")
-
-func _on_life_sim_button_pressed() -> void:
-	_on_genre_button_pressed("LifeSim")
-
-func _on_genre_button_pressed(genre: String) -> void:
-	if current_filter == genre:
-		current_filter = ""
-		show_all_items()
-		show_all_panels()
-	else:
-		current_filter = genre
-		filter_items_by_genre(genre)
-		hide_empty_panels()
-
-func show_all_items() -> void:
-	for container in containers.values():
-		show_items_in_container(container, true)
-
-func show_all_panels() -> void:
-	for panel in panels.values():
-		panel.visible = true
-
-func hide_empty_panels() -> void:
-	for panel_name in panels.keys():
-		var container = containers[panel_name]
-		var panel = panels[panel_name]
-		
-		if container.get_child_count() == 0:
-			panel.visible = false
-			continue
-		
-		var has_visible = false
-		for child in container.get_children():
-			if child.visible:
-				has_visible = true
-				break
-		
-		panel.visible = has_visible
-
-func filter_items_by_genre(genre: String) -> void:
-	for container in containers.values():
-		filter_container_by_genre(container, genre)
-
-func filter_container_by_genre(container: GridContainer, genre: String) -> void:
-	for child in container.get_children():
-		if child.has_meta("item_data"):
-			var item_genres = child.get_meta("item_data").get("Genres", [])
-			child.visible = genre in item_genres
-
-func show_items_in_container(container: GridContainer, visible: bool) -> void:
-	for child in container.get_children():
-		child.visible = visible
-
-func _on_show_all_button_pressed() -> void:
-	current_filter = ""
-	show_all_items()
-	show_all_panels()
 
 func create_inventory_slots() -> void:
 	clear_containers()
@@ -207,11 +68,11 @@ func create_inventory_slots() -> void:
 		setup_slot_metadata(inv_slot, item_id, current_item)
 		setup_slot_connection(inv_slot, item_id, current_item)
 		
-		# Add to appropriate container
-		if containers.has(item_type):
-			containers[item_type].add_child(inv_slot, true)
+		# Add to appropriate grid container
+		if _grids.has(item_type) and _grids[item_type]:
+			_grids[item_type].add_child(inv_slot, true)
 		else:
-			push_warning("Unknown type '%s' for item: %s" % [item_type, item_name])
+			push_warning("Unknown type '%s' or missing grid for item: %s" % [item_type, item_name])
 	
 	print_inventory_summary()
 
@@ -250,32 +111,59 @@ func setup_slot_connection(slot: Node, item_id: String, item_info: Dictionary) -
 
 func _on_slot_button_pressed(item_id: String, item_info: Dictionary) -> void:
 	print("Slot pressed: ", item_info.get("Name", "Unknown"))
-	show_item_details(item_id, item_info)
+	if info_panel and info_panel.has_method("show_item_details"):
+		info_panel.show_item_details(item_id, item_info)
 
 func clear_containers() -> void:
-	for container in containers.values():
-		for child in container.get_children():
-			child.queue_free()
+	for grid in _grids.values():
+		if grid:
+			for child in grid.get_children():
+				child.queue_free()
+
+func show_all_items() -> void:
+	for grid in _grids.values():
+		if grid:
+			show_items_in_grid(grid, true)
+
+func show_items_in_grid(grid: GridContainer, visible: bool) -> void:
+	for child in grid.get_children():
+		child.visible = visible
+
+func filter_items_by_genre(genre: String) -> void:
+	for grid in _grids.values():
+		if grid:
+			filter_grid_by_genre(grid, genre)
+
+func filter_grid_by_genre(grid: GridContainer, genre: String) -> void:
+	for child in grid.get_children():
+		if child.has_meta("item_data"):
+			var item_genres = child.get_meta("item_data").get("Genres", [])
+			child.visible = genre in item_genres
 
 func print_inventory_summary() -> void:
 	var summary = []
-	for type_name in containers.keys():
-		summary.append("%s: %d" % [type_name, containers[type_name].get_child_count()])
+	for type_name in _grids.keys():
+		if _grids[type_name]:
+			summary.append("%s: %d" % [type_name, _grids[type_name].get_child_count()])
 	print("Created inventory slots - ", ", ".join(summary))
 
-# Panel toggle handlers
-func _on_godot_toggle_pressed() -> void:
-	toggle_panel("Godot")
+# Signal handlers
+func _on_filter_changed(genre: String) -> void:
+	if current_filter == genre:
+		# Clear filter
+		current_filter = ""
+		show_all_items()
+		if b_genre_panel and b_genre_panel.has_method("show_all_panels"):
+			b_genre_panel.show_all_panels()
+	else:
+		# Apply new filter
+		current_filter = genre
+		filter_items_by_genre(genre)
+		if b_genre_panel and b_genre_panel.has_method("hide_empty_panels"):
+			b_genre_panel.hide_empty_panels()
 
-func _on_unity_toggle_pressed() -> void:
-	toggle_panel("Unity")
-
-func _on_unreal_toggle_pressed() -> void:
-	toggle_panel("Unreal")
-
-func _on_web_toggle_pressed() -> void:
-	toggle_panel("Web")
-
-func toggle_panel(panel_name: String) -> void:
-	if panels.has(panel_name):
-		panels[panel_name].visible = not panels[panel_name].visible
+func _on_show_all_requested() -> void:
+	current_filter = ""
+	show_all_items()
+	if b_genre_panel and b_genre_panel.has_method("show_all_panels"):
+		b_genre_panel.show_all_panels()

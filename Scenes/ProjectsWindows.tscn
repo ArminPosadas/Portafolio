@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://bulgoa0rxiwna" path="res://Assets/Sprites/LowBar-2.png" id="4_y4q6q"]
 [ext_resource type="Texture2D" uid="uid://bbjn3hb50bdh1" path="res://Assets/Sprites/Logo.png" id="5_21aso"]
 [ext_resource type="Script" uid="uid://dytxmxnci61xe" path="res://Scripts/button.gd" id="6_21aso"]
+[ext_resource type="Script" uid="uid://bogbqwn23tp0l" path="res://Scenes/GenrePanel.gd" id="7_d14eb"]
+[ext_resource type="Script" uid="uid://dr173wyeixf0" path="res://Scenes/InfoPanel.gd" id="8_l3cdh"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_164yw"]
 texture = ExtResource("2_05cl8")
@@ -196,6 +198,7 @@ offset_top = 134.0
 offset_right = 284.0
 offset_bottom = 965.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_164yw")
+script = ExtResource("7_d14eb")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="BGenrePanel" unique_id=712003665]
 layout_mode = 1
@@ -293,6 +296,7 @@ offset_top = 134.0
 offset_right = 1920.0
 offset_bottom = 965.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_164yw")
+script = ExtResource("8_l3cdh")
 
 [node name="Descripcion" type="Panel" parent="InfoPanel" unique_id=1664058769]
 layout_mode = 0
@@ -357,16 +361,16 @@ text = "Sort By"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="Buttons/HBoxContainer/GodotToggle" to="." method="_on_godot_toggle_pressed"]
-[connection signal="pressed" from="Buttons/HBoxContainer/UnityToggle" to="." method="_on_unity_toggle_pressed"]
-[connection signal="pressed" from="Buttons/HBoxContainer/UnrealToggle" to="." method="_on_unreal_toggle_pressed"]
-[connection signal="pressed" from="Buttons/HBoxContainer/WebToggle" to="." method="_on_web_toggle_pressed"]
+[connection signal="pressed" from="Buttons/HBoxContainer/GodotToggle" to="BGenrePanel" method="_on_godot_toggle_pressed"]
+[connection signal="pressed" from="Buttons/HBoxContainer/UnityToggle" to="BGenrePanel" method="_on_unity_toggle_pressed"]
+[connection signal="pressed" from="Buttons/HBoxContainer/UnrealToggle" to="BGenrePanel" method="_on_unreal_toggle_pressed"]
+[connection signal="pressed" from="Buttons/HBoxContainer/WebToggle" to="BGenrePanel" method="_on_web_toggle_pressed"]
 [connection signal="pressed" from="HeaderPanel/TextureRect/Button" to="HeaderPanel/TextureRect/Button" method="_on_pressed"]
-[connection signal="pressed" from="BGenrePanel/ScrollContainer/VBoxContainer/TowerDefense" to="." method="_on_tower_defense_button_pressed"]
-[connection signal="pressed" from="BGenrePanel/ScrollContainer/VBoxContainer/AIBehaviour" to="." method="_on_ai_behaviour_button_pressed"]
-[connection signal="pressed" from="BGenrePanel/ScrollContainer/VBoxContainer/VFX" to="." method="_on_vfx_button_pressed"]
-[connection signal="pressed" from="BGenrePanel/ScrollContainer/VBoxContainer/WebPage" to="." method="_on_web_page_button_pressed"]
-[connection signal="pressed" from="BGenrePanel/ScrollContainer/VBoxContainer/2DFighting" to="." method="_on_2d_fighting_button_pressed"]
-[connection signal="pressed" from="BGenrePanel/ScrollContainer/VBoxContainer/3DPuzzle" to="." method="_on_3d_puzzle_button_pressed"]
-[connection signal="pressed" from="BGenrePanel/ScrollContainer/VBoxContainer/3DRPG" to="." method="_on_3d_rpg_button_pressed"]
-[connection signal="pressed" from="BGenrePanel/ScrollContainer/VBoxContainer/LifeSim" to="." method="_on_life_sim_button_pressed"]
+[connection signal="pressed" from="BGenrePanel/ScrollContainer/VBoxContainer/TowerDefense" to="BGenrePanel" method="_on_tower_defense_button_pressed"]
+[connection signal="pressed" from="BGenrePanel/ScrollContainer/VBoxContainer/AIBehaviour" to="BGenrePanel" method="_on_ai_behaviour_button_pressed"]
+[connection signal="pressed" from="BGenrePanel/ScrollContainer/VBoxContainer/VFX" to="BGenrePanel" method="_on_vfx_button_pressed"]
+[connection signal="pressed" from="BGenrePanel/ScrollContainer/VBoxContainer/WebPage" to="BGenrePanel" method="_on_web_page_button_pressed"]
+[connection signal="pressed" from="BGenrePanel/ScrollContainer/VBoxContainer/2DFighting" to="BGenrePanel" method="_on_2d_fighting_button_pressed"]
+[connection signal="pressed" from="BGenrePanel/ScrollContainer/VBoxContainer/3DPuzzle" to="BGenrePanel" method="_on_3d_puzzle_button_pressed"]
+[connection signal="pressed" from="BGenrePanel/ScrollContainer/VBoxContainer/3DRPG" to="BGenrePanel" method="_on_3d_rpg_button_pressed"]
+[connection signal="pressed" from="BGenrePanel/ScrollContainer/VBoxContainer/LifeSim" to="BGenrePanel" method="_on_life_sim_button_pressed"]
