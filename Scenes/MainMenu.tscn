@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://dyqups7e1qmx8"]
 
 [ext_resource type="Script" uid="uid://ujmyarvot6rf" path="res://Scripts/InventLink.gd" id="1_fh7cp"]
-[ext_resource type="Texture2D" uid="uid://cs3gqb7pwd44b" path="res://Assets/Sprites/windows-7-background-imfecqv6cnsicbx4.jpg" id="1_tt5f1"]
 [ext_resource type="Texture2D" uid="uid://bulgoa0rxiwna" path="res://Assets/Sprites/LowBar-2.png" id="2_8saeu"]
 [ext_resource type="Texture2D" uid="uid://beht8luq4mawy" path="res://Assets/Sprites/LowBar.png" id="2_853f1"]
 [ext_resource type="FontFile" uid="uid://u87bs8o77s8v" path="res://Fonts/VCR_OSD_MONO_1.001.ttf" id="3_df05h"]
@@ -11,7 +10,15 @@
 [ext_resource type="Script" uid="uid://dwbyi8immmwln" path="res://Scripts/ButtonPopUp.gd" id="8_cmrfp"]
 [ext_resource type="Texture2D" uid="uid://dihki0l6fgfbe" path="res://Assets/Sprites/Currículum hoja de vida laboral profesional formal azul.png" id="9_cmrfp"]
 [ext_resource type="Script" uid="uid://ddl2aqh0uk2go" path="res://Scripts/NextScene.gd" id="9_loo7a"]
+[ext_resource type="Texture2D" uid="uid://cttvr34rmw8v3" path="res://Assets/Sprites/BackgroundPF1.png" id="12_fh7cp"]
 [ext_resource type="Script" uid="uid://ctvpyxvbkdgmv" path="res://Scripts/LinkData.gd" id="12_rrcx7"]
+[ext_resource type="Texture2D" uid="uid://c6fn86v3tdg0o" path="res://Assets/Sprites/Clouds1.png" id="13_8e205"]
+[ext_resource type="Texture2D" uid="uid://m5d70634rr3v" path="res://Assets/Sprites/Clouds2.png" id="14_7467j"]
+[ext_resource type="Texture2D" uid="uid://b4dgoq3l4wyl" path="res://Assets/Sprites/Clouds3.png" id="15_2x1g0"]
+[ext_resource type="Texture2D" uid="uid://boaea2y6fmtfn" path="res://Assets/Sprites/Waves.png" id="16_7v4os"]
+[ext_resource type="Texture2D" uid="uid://bact7rublwset" path="res://Assets/Sprites/Waves2.png" id="17_pjscj"]
+[ext_resource type="Texture2D" uid="uid://di6i06ngrdyl7" path="res://Assets/Sprites/Waves3.png" id="18_m7n2d"]
+[ext_resource type="Texture2D" uid="uid://cyii216rnfji4" path="res://Assets/Sprites/Waves4.png" id="19_65hh5"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ghw46"]
 texture = ExtResource("2_8saeu")
@@ -36,11 +43,9 @@ texture_margin_bottom = 2.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_8um5k"]
 font = ExtResource("3_df05h")
-font_size = 10
 
 [sub_resource type="LabelSettings" id="LabelSettings_853f1"]
 font = ExtResource("3_df05h")
-font_size = 10
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xim88"]
 texture = ExtResource("5_xim88")
@@ -55,14 +60,98 @@ script = ExtResource("1_fh7cp")
 [node name="LinkData" type="Node" parent="." unique_id=1304741527]
 script = ExtResource("12_rrcx7")
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1089136446]
+[node name="Background" type="Node2D" parent="." unique_id=300237695]
+show_behind_parent = true
+
+[node name="TextureRect" type="TextureRect" parent="Background" unique_id=1089136446]
 offset_right = 1920.0
 offset_bottom = 967.0
-texture = ExtResource("1_tt5f1")
+texture = ExtResource("12_fh7cp")
 expand_mode = 1
 
-[node name="LowBar" type="Panel" parent="." unique_id=737782414]
+[node name="Clouds1" type="Parallax2D" parent="Background" unique_id=356528270]
+z_index = -1
+texture_filter = 1
+scroll_offset = Vector2(4, 0)
+repeat_size = Vector2(1920, 0)
+autoscroll = Vector2(-2, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Clouds1" unique_id=395359559]
+z_index = 3
+position = Vector2(960, 438)
+texture = ExtResource("13_8e205")
+
+[node name="Clouds2" type="Parallax2D" parent="Background" unique_id=1833200772]
+texture_filter = 1
+scroll_offset = Vector2(0, -364)
+repeat_size = Vector2(1920, 0)
+autoscroll = Vector2(-25, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Clouds2" unique_id=676232922]
 z_index = 2
+position = Vector2(960, 438)
+texture = ExtResource("14_7467j")
+
+[node name="Clouds3" type="Parallax2D" parent="Background" unique_id=1053414465]
+texture_filter = 1
+scroll_offset = Vector2(28, -266)
+repeat_size = Vector2(1920, 0)
+autoscroll = Vector2(-50, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Clouds3" unique_id=173898418]
+z_index = 1
+position = Vector2(960, 438)
+texture = ExtResource("15_2x1g0")
+
+[node name="Waves" type="Parallax2D" parent="Background" unique_id=1993824552]
+z_index = 3
+texture_filter = 1
+scroll_offset = Vector2(0, -225)
+repeat_size = Vector2(1920, 0)
+autoscroll = Vector2(-100, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Waves" unique_id=2030529573]
+z_index = 1
+position = Vector2(961, 1055)
+texture = ExtResource("16_7v4os")
+
+[node name="Waves2" type="Parallax2D" parent="Background" unique_id=688042160]
+z_index = 2
+texture_filter = 1
+scroll_offset = Vector2(0, -301)
+repeat_size = Vector2(1920, 0)
+autoscroll = Vector2(-75, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Waves2" unique_id=1499622772]
+z_index = 1
+position = Vector2(961, 1055)
+texture = ExtResource("17_pjscj")
+
+[node name="Waves3" type="Parallax2D" parent="Background" unique_id=272342219]
+z_index = 1
+texture_filter = 1
+scroll_offset = Vector2(0, -364)
+repeat_size = Vector2(1920, 0)
+autoscroll = Vector2(-50, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Waves3" unique_id=2070567952]
+z_index = 1
+position = Vector2(961, 1055)
+texture = ExtResource("18_m7n2d")
+
+[node name="Waves4" type="Parallax2D" parent="Background" unique_id=2050975168]
+texture_filter = 1
+scroll_offset = Vector2(0, -409)
+repeat_size = Vector2(1920, 0)
+autoscroll = Vector2(-25, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Waves4" unique_id=106176211]
+z_index = 1
+position = Vector2(961, 1055)
+texture = ExtResource("19_65hh5")
+
+[node name="LowBar" type="Panel" parent="." unique_id=737782414]
+z_index = 6
 offset_top = 846.0
 offset_right = 1920.0
 offset_bottom = 967.0
@@ -71,6 +160,7 @@ size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxTexture_ghw46")
 
 [node name="Button" type="Button" parent="LowBar" unique_id=1157718472 node_paths=PackedStringArray("menu_bar")]
+z_index = 6
 layout_mode = 0
 offset_left = 21.0
 offset_top = 15.0
@@ -122,7 +212,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="MenuBar" type="Panel" parent="." unique_id=690145025]
-z_index = 1
+z_index = 4
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -156,6 +246,7 @@ theme_override_constants/separation = 20
 alignment = 1
 
 [node name="AbMe" type="Button" parent="MenuBar/Panel2/VBoxContainer" unique_id=2035130555 node_paths=PackedStringArray("popup_window")]
+z_index = 1
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -170,6 +261,7 @@ script = ExtResource("8_cmrfp")
 popup_window = NodePath("../../../../AboutMe")
 
 [node name="CV" type="Button" parent="MenuBar/Panel2/VBoxContainer" unique_id=435507307 node_paths=PackedStringArray("popup_window")]
+z_index = 1
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -184,6 +276,7 @@ script = ExtResource("8_cmrfp")
 popup_window = NodePath("../../../../CV")
 
 [node name="P" type="Button" parent="MenuBar/Panel2/VBoxContainer" unique_id=1337806333]
+z_index = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_df05h")
@@ -196,6 +289,7 @@ expand_icon = true
 script = ExtResource("9_loo7a")
 
 [node name="C" type="Button" parent="MenuBar/Panel2/VBoxContainer" unique_id=1462626529 node_paths=PackedStringArray("popup_window")]
+z_index = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_df05h")
