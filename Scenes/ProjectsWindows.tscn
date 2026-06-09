@@ -1,21 +1,69 @@
 [gd_scene format=3 uid="uid://qmsds738ryp3"]
 
 [ext_resource type="Script" uid="uid://b5uw7oebdsher" path="res://Scripts/Inventory.gd" id="1_164yw"]
-[ext_resource type="Texture2D" uid="uid://cw8upj865edac" path="res://Assets/Sprites/LowBar-Highlight.png" id="2_05cl8"]
 [ext_resource type="Script" uid="uid://bqi3jbseq5jkd" path="res://Singletons/GameData.gd" id="2_164yw"]
-[ext_resource type="Texture2D" uid="uid://bulgoa0rxiwna" path="res://Assets/Sprites/LowBar-2.png" id="4_y4q6q"]
-[ext_resource type="Texture2D" uid="uid://bbjn3hb50bdh1" path="res://Assets/Sprites/Logo.png" id="5_21aso"]
+[ext_resource type="FontFile" uid="uid://u87bs8o77s8v" path="res://Fonts/VCR_OSD_MONO_1.001.ttf" id="3_p23kf"]
+[ext_resource type="Texture2D" uid="uid://d1bkapx4wc0u" path="res://Assets/Icon_Items/ButtonBarHighALT.png" id="3_won51"]
+[ext_resource type="Texture2D" uid="uid://bo5i0nfkjdge8" path="res://Assets/Sprites/Background.png" id="3_y2tfy"]
+[ext_resource type="Texture2D" uid="uid://bsjf8uk288ves" path="res://Assets/Sprites/FrontDecor.png" id="4_dnosv"]
+[ext_resource type="Texture2D" uid="uid://c62v1o40c5mqt" path="res://Assets/Icon_Items/ButtonBarALT.png" id="4_kvk58"]
+[ext_resource type="Texture2D" uid="uid://4n06a3m8yblf" path="res://Assets/Sprites/BackRocks.png" id="5_a7syu"]
+[ext_resource type="Texture2D" uid="uid://kpkxm7wkoiil" path="res://Assets/Icon_Items/Close.png" id="5_qaqjs"]
+[ext_resource type="Texture2D" uid="uid://dao47njjtvfsj" path="res://Assets/Icon_Items/MenusBarALT.png" id="5_y2tfy"]
 [ext_resource type="Script" uid="uid://dytxmxnci61xe" path="res://Scripts/button.gd" id="6_21aso"]
-[ext_resource type="Script" uid="uid://bogbqwn23tp0l" path="res://Scenes/GenrePanel.gd" id="7_d14eb"]
-[ext_resource type="Script" uid="uid://dr173wyeixf0" path="res://Scenes/InfoPanel.gd" id="8_l3cdh"]
+[ext_resource type="Script" uid="uid://bogbqwn23tp0l" path="res://Scripts/GenrePanel.gd" id="7_d14eb"]
+[ext_resource type="Script" uid="uid://dr173wyeixf0" path="res://Scripts/InfoPanel.gd" id="8_l3cdh"]
 [ext_resource type="Script" uid="uid://rdj0ps06qa23" path="res://Scripts/video_stream_player.gd" id="9_l3cdh"]
+[ext_resource type="Texture2D" uid="uid://d2ewln4q3imxm" path="res://Assets/Icon_Items/Play.png" id="9_ry13m"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dnosv"]
+texture = ExtResource("3_won51")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p23kf"]
+texture = ExtResource("4_kvk58")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_164yw"]
-texture = ExtResource("2_05cl8")
-texture_margin_left = 2.0
-texture_margin_top = 2.0
-texture_margin_right = 2.0
-texture_margin_bottom = 2.0
+texture = ExtResource("5_y2tfy")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y2tfy"]
+texture = ExtResource("3_won51")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a7syu"]
+texture = ExtResource("4_kvk58")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ry13m"]
+texture = ExtResource("3_won51")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_won51"]
+texture = ExtResource("3_won51")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
 
 [sub_resource type="Animation" id="Animation_21aso"]
 resource_name = "RESET"
@@ -30,6 +78,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(612, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1920, 134)]
 }
 
 [sub_resource type="Animation" id="Animation_aap42"]
@@ -48,10 +108,27 @@ tracks/0/keys = {
 "values": [Vector2(612, 0), Vector2(612, 831)]
 }
 
+[sub_resource type="Animation" id="Animation_y2tfy"]
+resource_name = "move_info"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1920, 134), Vector2(1308, 134)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_d14eb"]
 _data = {
 &"RESET": SubResource("Animation_21aso"),
-&"hidden": SubResource("Animation_aap42")
+&"hidden": SubResource("Animation_aap42"),
+&"move_info": SubResource("Animation_y2tfy")
 }
 
 [node name="ProjectsComp" type="Control" unique_id=832354694]
@@ -67,7 +144,41 @@ metadata/_edit_use_anchors_ = true
 [node name="Game Data" type="Node" parent="." unique_id=1470877258]
 script = ExtResource("2_164yw")
 
+[node name="Node2D" type="Node2D" parent="." unique_id=2120163627]
+
+[node name="Background" type="Parallax2D" parent="Node2D" unique_id=1103229750]
+z_index = -1
+repeat_size = Vector2(1920, 0)
+autoscroll = Vector2(-2, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/Background" unique_id=428491996]
+scale = Vector2(1, 0.89537036)
+texture = ExtResource("3_y2tfy")
+centered = false
+
+[node name="FrontRocks" type="Parallax2D" parent="Node2D" unique_id=851567259]
+z_index = 1
+repeat_size = Vector2(1920, 0)
+autoscroll = Vector2(-25, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/FrontRocks" unique_id=30898632]
+position = Vector2(0, 360.00003)
+scale = Vector2(1, 0.89537036)
+texture = ExtResource("4_dnosv")
+centered = false
+
+[node name="BackRocks" type="Parallax2D" parent="Node2D" unique_id=1719067898]
+repeat_size = Vector2(1920, 0)
+autoscroll = Vector2(-50, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/BackRocks" unique_id=1904830650]
+position = Vector2(0, 287.00003)
+scale = Vector2(1, 0.89537036)
+texture = ExtResource("5_a7syu")
+centered = false
+
 [node name="Projects" type="ScrollContainer" parent="." unique_id=1077229267]
+z_index = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -136,6 +247,7 @@ theme_override_constants/v_separation = 250
 columns = 10
 
 [node name="Buttons" type="MarginContainer" parent="." unique_id=2045001844]
+z_index = 1
 layout_mode = 0
 offset_left = 284.0
 offset_top = 75.0
@@ -149,24 +261,41 @@ alignment = 1
 [node name="GodotToggle" type="Button" parent="Buttons/HBoxContainer" unique_id=898180061]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_p23kf")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxTexture_dnosv")
+theme_override_styles/hover = SubResource("StyleBoxTexture_p23kf")
 text = "Hide Godot projects"
 
 [node name="UnityToggle" type="Button" parent="Buttons/HBoxContainer" unique_id=1202765215]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_p23kf")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxTexture_dnosv")
+theme_override_styles/hover = SubResource("StyleBoxTexture_p23kf")
 text = "Hide Unity projects"
 
 [node name="UnrealToggle" type="Button" parent="Buttons/HBoxContainer" unique_id=1423713054]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_p23kf")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxTexture_dnosv")
+theme_override_styles/hover = SubResource("StyleBoxTexture_p23kf")
 text = "Hide Unreal projects"
 
 [node name="WebToggle" type="Button" parent="Buttons/HBoxContainer" unique_id=413003764]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_p23kf")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxTexture_dnosv")
+theme_override_styles/hover = SubResource("StyleBoxTexture_p23kf")
 text = "Hide Web projects"
 
 [node name="HeaderPanel" type="Panel" parent="." unique_id=1838451409]
+z_index = 1
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -174,26 +303,20 @@ offset_bottom = 75.0
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_164yw")
 
-[node name="TextureRect" type="TextureRect" parent="HeaderPanel" unique_id=403474418]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -1845.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("4_y4q6q")
-
-[node name="Button" type="Button" parent="HeaderPanel/TextureRect" unique_id=1592458925]
+[node name="Button" type="Button" parent="HeaderPanel" unique_id=1592458925]
 layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
 offset_right = 75.0
-offset_bottom = 75.0
-icon = ExtResource("5_21aso")
-flat = true
+offset_bottom = 70.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_y2tfy")
+theme_override_styles/hover = SubResource("StyleBoxTexture_a7syu")
+icon = ExtResource("5_qaqjs")
 icon_alignment = 1
 script = ExtResource("6_21aso")
 
 [node name="BGenrePanel" type="Panel" parent="." unique_id=710020148]
+z_index = 1
 layout_mode = 0
 offset_top = 134.0
 offset_right = 284.0
@@ -223,21 +346,30 @@ alignment = 1
 custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_font_sizes/font_size = 21
+theme_override_fonts/font = ExtResource("3_p23kf")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxTexture_dnosv")
+theme_override_styles/hover = SubResource("StyleBoxTexture_p23kf")
 text = "Tower Defense"
 
 [node name="AIBehaviour" type="Button" parent="BGenrePanel/ScrollContainer/VBoxContainer" unique_id=618401010]
 custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_font_sizes/font_size = 21
+theme_override_fonts/font = ExtResource("3_p23kf")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxTexture_dnosv")
+theme_override_styles/hover = SubResource("StyleBoxTexture_p23kf")
 text = "AI Behaviour"
 
 [node name="VFX" type="Button" parent="BGenrePanel/ScrollContainer/VBoxContainer" unique_id=1208788875]
 custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_font_sizes/font_size = 21
+theme_override_fonts/font = ExtResource("3_p23kf")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxTexture_dnosv")
+theme_override_styles/hover = SubResource("StyleBoxTexture_p23kf")
 text = "VFX
 "
 
@@ -245,7 +377,10 @@ text = "VFX
 custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_font_sizes/font_size = 21
+theme_override_fonts/font = ExtResource("3_p23kf")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxTexture_dnosv")
+theme_override_styles/hover = SubResource("StyleBoxTexture_p23kf")
 text = "Web Page
 
 "
@@ -254,7 +389,10 @@ text = "Web Page
 custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_font_sizes/font_size = 21
+theme_override_fonts/font = ExtResource("3_p23kf")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxTexture_dnosv")
+theme_override_styles/hover = SubResource("StyleBoxTexture_p23kf")
 text = "2D Fighting
 
 "
@@ -263,7 +401,10 @@ text = "2D Fighting
 custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_font_sizes/font_size = 21
+theme_override_fonts/font = ExtResource("3_p23kf")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxTexture_dnosv")
+theme_override_styles/hover = SubResource("StyleBoxTexture_p23kf")
 text = "3D Puzzle
 
 
@@ -273,7 +414,10 @@ text = "3D Puzzle
 custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_font_sizes/font_size = 21
+theme_override_fonts/font = ExtResource("3_p23kf")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxTexture_dnosv")
+theme_override_styles/hover = SubResource("StyleBoxTexture_p23kf")
 text = "3D RPG
 
 
@@ -284,50 +428,32 @@ text = "3D RPG
 custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_font_sizes/font_size = 21
+theme_override_fonts/font = ExtResource("3_p23kf")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxTexture_dnosv")
+theme_override_styles/hover = SubResource("StyleBoxTexture_p23kf")
 text = "Life Simulator
 
 
 "
 
 [node name="InfoPanel" type="Panel" parent="." unique_id=435651258]
+z_index = 1
 layout_mode = 0
-offset_left = 1308.0
+offset_left = 1920.0
 offset_top = 134.0
-offset_right = 1920.0
+offset_right = 2531.9995
 offset_bottom = 965.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_164yw")
 script = ExtResource("8_l3cdh")
 
-[node name="TextureRect" type="TextureRect" parent="InfoPanel" unique_id=372377589]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 2.0
-offset_top = 2.0
-offset_right = -550.0
-offset_bottom = -769.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("4_y4q6q")
-
-[node name="Button" type="Button" parent="InfoPanel/TextureRect" unique_id=1779823972]
-layout_mode = 0
-offset_right = 60.0
-offset_bottom = 60.0
-icon = ExtResource("5_21aso")
-flat = true
-icon_alignment = 1
-script = ExtResource("6_21aso")
-
 [node name="Pause" type="Button" parent="InfoPanel" unique_id=1264268919]
 layout_mode = 0
-offset_left = 202.0
+offset_left = 290.0
 offset_top = 753.0
-offset_right = 262.0
-offset_bottom = 813.0
-icon = ExtResource("5_21aso")
+offset_right = 354.0
+offset_bottom = 817.0
+icon = ExtResource("9_ry13m")
 icon_alignment = 1
 
 [node name="Descripcion" type="Panel" parent="InfoPanel" unique_id=1664058769]
@@ -336,46 +462,71 @@ offset_left = 20.0
 offset_top = 69.0
 offset_right = 595.0
 offset_bottom = 370.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_ry13m")
 
 [node name="Label" type="Label" parent="InfoPanel/Descripcion" unique_id=2136360131]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_p23kf")
+theme_override_font_sizes/font_size = 20
 autowrap_mode = 2
 
 [node name="Video" type="Panel" parent="InfoPanel" unique_id=1196165693]
 layout_mode = 0
 offset_left = 20.0
 offset_top = 388.0
-offset_right = 595.0
-offset_bottom = 738.0
+offset_right = 596.0
+offset_bottom = 743.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_won51")
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="InfoPanel/Video" unique_id=1550106903]
 layout_mode = 1
-offset_right = 1280.0
-offset_bottom = 720.0
-scale = Vector2(0.44931105, 0.4859356)
+offset_left = 6.000015
+offset_top = 6.0000405
+offset_right = 1282.0178
+offset_bottom = 722.075
+scale = Vector2(0.442, 0.479)
 autoplay = true
+expand = true
 loop = true
 script = ExtResource("9_l3cdh")
 
 [node name="ColorRect" type="ColorRect" parent="InfoPanel" unique_id=1152579527]
+z_index = 2
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 0.00048828125
 offset_bottom = -831.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="InfoPanel" unique_id=1224295962]
+[node name="Transition" type="AnimationPlayer" parent="InfoPanel" unique_id=1224295962]
 libraries/ = SubResource("AnimationLibrary_d14eb")
 
+[node name="Close" type="Button" parent="InfoPanel" unique_id=1779823972]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 65.0
+offset_bottom = 65.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_dnosv")
+theme_override_styles/hover = SubResource("StyleBoxTexture_p23kf")
+icon = ExtResource("5_qaqjs")
+icon_alignment = 1
+
 [node name="SortPanel" type="Panel" parent="." unique_id=1334710917]
+z_index = 1
 layout_mode = 0
 offset_top = 75.0
 offset_right = 284.0
@@ -389,6 +540,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_p23kf")
 theme_override_font_sizes/font_size = 38
 text = "Sort By"
 horizontal_alignment = 1
@@ -398,7 +550,7 @@ vertical_alignment = 1
 [connection signal="pressed" from="Buttons/HBoxContainer/UnityToggle" to="BGenrePanel" method="_on_unity_toggle_pressed"]
 [connection signal="pressed" from="Buttons/HBoxContainer/UnrealToggle" to="BGenrePanel" method="_on_unreal_toggle_pressed"]
 [connection signal="pressed" from="Buttons/HBoxContainer/WebToggle" to="BGenrePanel" method="_on_web_toggle_pressed"]
-[connection signal="pressed" from="HeaderPanel/TextureRect/Button" to="HeaderPanel/TextureRect/Button" method="_on_pressed"]
+[connection signal="pressed" from="HeaderPanel/Button" to="HeaderPanel/Button" method="_on_pressed"]
 [connection signal="pressed" from="BGenrePanel/ScrollContainer/VBoxContainer/TowerDefense" to="BGenrePanel" method="_on_tower_defense_button_pressed"]
 [connection signal="pressed" from="BGenrePanel/ScrollContainer/VBoxContainer/AIBehaviour" to="BGenrePanel" method="_on_ai_behaviour_button_pressed"]
 [connection signal="pressed" from="BGenrePanel/ScrollContainer/VBoxContainer/VFX" to="BGenrePanel" method="_on_vfx_button_pressed"]
@@ -407,5 +559,5 @@ vertical_alignment = 1
 [connection signal="pressed" from="BGenrePanel/ScrollContainer/VBoxContainer/3DPuzzle" to="BGenrePanel" method="_on_3d_puzzle_button_pressed"]
 [connection signal="pressed" from="BGenrePanel/ScrollContainer/VBoxContainer/3DRPG" to="BGenrePanel" method="_on_3d_rpg_button_pressed"]
 [connection signal="pressed" from="BGenrePanel/ScrollContainer/VBoxContainer/LifeSim" to="BGenrePanel" method="_on_life_sim_button_pressed"]
-[connection signal="pressed" from="InfoPanel/TextureRect/Button" to="InfoPanel/TextureRect/Button" method="_on_pressed"]
 [connection signal="button_down" from="InfoPanel/Pause" to="InfoPanel/Video/VideoStreamPlayer" method="_on_pause_button_down"]
+[connection signal="pressed" from="InfoPanel/Close" to="InfoPanel" method="_on_close_pressed"]

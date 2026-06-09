@@ -30,9 +30,9 @@ func _ready() -> void:
 	create_inventory_slots()
 	show_all_items()
 	
-	# Info panel starts hidden
+	# Info panel starts visible (remove this line or set to true)
 	if info_panel:
-		info_panel.visible = false
+		info_panel.visible = true  # Changed from false to true
 
 func load_item_data() -> void:
 	var json_file = FileAccess.open(ITEM_DATA_PATH, FileAccess.READ)

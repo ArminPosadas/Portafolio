@@ -1,6 +1,6 @@
 {
   "1": {
-	"Name": "Unreal",
+	"Name": "DialogueSystem",
 	"Summary": "versatile dialogue system for Unreal",
 	"Type": "Unreal",
 	"Genres": ["3DRPG"],
@@ -8,7 +8,7 @@
 	"Video": "Example.ogv"
   },
   "2": {
-	"Name": "Unity",
+	"Name": "Fighting",
 	"Summary": "AI behaviour for a fighting game",
 	"Type": "Unity",
 	"Genres": ["2DFighting", "AIBehaviour"],
@@ -16,7 +16,7 @@
 	"Video": ""
   },
   "3": {
-	"Name": "Web",
+	"Name": "GLTFWeb",
 	"Summary": "Use of GLTF for adding 3d models to websites",
 	"Type": "Web",
 	"Genres": ["WebPage"],
@@ -24,7 +24,7 @@
 	"Video": ""
   },
   "4": {
-	"Name": "Unity",
+	"Name": "Puzzles",
 	"Summary": "Colaborative work between 3 people to make different puzzles",
 	"Type": "Unity",
 	"Genres": ["3DPuzzle"],
@@ -32,15 +32,15 @@
 	"Video": ""
   },
   "5": {
-	"Name": "Unity",
+	"Name": "VFX",
 	"Summary": "Collection of various VFX made in unity",
 	"Type": "Unity",
 	"Genres": ["VFX"],
-	"Description": "A collection of different VFX made in Unity using ShaderGraphs using methods like distortion with positions to create a Playstation 1 model (Duck model), masks with tilings to create in-game animations (Arrow), Lerps for background and foreground elements (Magnifying glass), Madcaps and Rimlights for perspective effects (Statue with eyes) or a combination of all of them (Planet Earth replica).",
+	"Description": "A collection of different VFX made in Unity using ShaderGraphs using methods like distortion with positions to create a Playstation 1 model, masks with tilings to create in-game animations, Lerps for background and foreground elements, Madcaps and Rimlights for perspective effects or a combination of all of them.",
 	"Video": ""
   },
   "6": {
-	"Name": "Unreal",
+	"Name": "TDStore",
 	"Summary": "Colaborative work with a team on a tower defense",
 	"Type": "Unreal",
 	"Genres": ["TowerDefense"],
@@ -48,7 +48,7 @@
 	"Video": ""
   },
   "7": {
-	"Name": "Unity",
+	"Name": "AIBehaviour",
 	"Summary": "Behaviour Tree for a virtual pet with it's own schedule and needs",
 	"Type": "Unity",
 	"Genres": ["AIBehaviour", "LifeSim"],
@@ -56,7 +56,7 @@
 	"Video": ""
   },
   "8": {
-	"Name": "Godot",
+	"Name": "PortfolioWeb",
 	"Summary": "Interactive WebPage made in Godot",
 	"Type": "Godot",
 	"Genres": ["WebPage"],

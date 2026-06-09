@@ -1,45 +1,49 @@
 [gd_scene format=3 uid="uid://dyqups7e1qmx8"]
 
 [ext_resource type="Script" uid="uid://ujmyarvot6rf" path="res://Scripts/InventLink.gd" id="1_fh7cp"]
-[ext_resource type="Texture2D" uid="uid://bulgoa0rxiwna" path="res://Assets/Sprites/LowBar-2.png" id="2_8saeu"]
-[ext_resource type="Texture2D" uid="uid://beht8luq4mawy" path="res://Assets/Sprites/LowBar.png" id="2_853f1"]
 [ext_resource type="FontFile" uid="uid://u87bs8o77s8v" path="res://Fonts/VCR_OSD_MONO_1.001.ttf" id="3_df05h"]
-[ext_resource type="Texture2D" uid="uid://bbjn3hb50bdh1" path="res://Assets/Sprites/Logo.png" id="5_8um5k"]
-[ext_resource type="Texture2D" uid="uid://cw8upj865edac" path="res://Assets/Sprites/LowBar-Highlight.png" id="5_xim88"]
 [ext_resource type="Script" uid="uid://csbbdahh8yqau" path="res://Scripts/MMButton.gd" id="7_xim88"]
 [ext_resource type="Script" uid="uid://dwbyi8immmwln" path="res://Scripts/ButtonPopUp.gd" id="8_cmrfp"]
 [ext_resource type="Texture2D" uid="uid://dihki0l6fgfbe" path="res://Assets/Sprites/Currículum hoja de vida laboral profesional formal azul.png" id="9_cmrfp"]
 [ext_resource type="Script" uid="uid://ddl2aqh0uk2go" path="res://Scripts/NextScene.gd" id="9_loo7a"]
+[ext_resource type="Texture2D" uid="uid://cn0ifsfiv5rey" path="res://Assets/Icon_Items/MenusBar.png" id="11_6byu3"]
 [ext_resource type="Texture2D" uid="uid://cttvr34rmw8v3" path="res://Assets/Sprites/BackgroundPF1.png" id="12_fh7cp"]
 [ext_resource type="Script" uid="uid://ctvpyxvbkdgmv" path="res://Scripts/LinkData.gd" id="12_rrcx7"]
+[ext_resource type="Texture2D" uid="uid://cdo7ffnque38c" path="res://Assets/Icon_Items/ButtonBar.png" id="13_6byu3"]
 [ext_resource type="Texture2D" uid="uid://c6fn86v3tdg0o" path="res://Assets/Sprites/Clouds1.png" id="13_8e205"]
 [ext_resource type="Texture2D" uid="uid://m5d70634rr3v" path="res://Assets/Sprites/Clouds2.png" id="14_7467j"]
+[ext_resource type="Texture2D" uid="uid://i7yo6s4wwc52" path="res://Assets/Icon_Items/ButtonBarHigh.png" id="14_leunp"]
 [ext_resource type="Texture2D" uid="uid://b4dgoq3l4wyl" path="res://Assets/Sprites/Clouds3.png" id="15_2x1g0"]
+[ext_resource type="Texture2D" uid="uid://da448e586k7g6" path="res://Assets/Icon_Items/Menu.png" id="15_6byu3"]
 [ext_resource type="Texture2D" uid="uid://boaea2y6fmtfn" path="res://Assets/Sprites/Waves.png" id="16_7v4os"]
+[ext_resource type="Texture2D" uid="uid://b8fmfqe2k83u4" path="res://Assets/Icon_Items/AboutMe.png" id="17_leunp"]
 [ext_resource type="Texture2D" uid="uid://bact7rublwset" path="res://Assets/Sprites/Waves2.png" id="17_pjscj"]
 [ext_resource type="Texture2D" uid="uid://di6i06ngrdyl7" path="res://Assets/Sprites/Waves3.png" id="18_m7n2d"]
 [ext_resource type="Texture2D" uid="uid://cyii216rnfji4" path="res://Assets/Sprites/Waves4.png" id="19_65hh5"]
+[ext_resource type="Texture2D" uid="uid://kecuaroc3rm7" path="res://Assets/Icon_Items/CV.png" id="19_h1v62"]
+[ext_resource type="Texture2D" uid="uid://dlnhhctw6nd1n" path="res://Assets/Icon_Items/Proyects.png" id="20_5hdia"]
+[ext_resource type="Texture2D" uid="uid://b2rnluhpy5vf8" path="res://Assets/Icon_Items/Contacts.png" id="22_iqn0u"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ghw46"]
-texture = ExtResource("2_8saeu")
-texture_margin_left = 2.0
-texture_margin_top = 2.0
-texture_margin_right = 2.0
-texture_margin_bottom = 2.0
+texture = ExtResource("11_6byu3")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8saeu"]
-texture = ExtResource("2_853f1")
-texture_margin_left = 2.0
-texture_margin_top = 2.0
-texture_margin_right = 2.0
-texture_margin_bottom = 2.0
+texture = ExtResource("13_6byu3")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_koqhg"]
-texture = ExtResource("5_xim88")
-texture_margin_left = 2.0
-texture_margin_top = 2.0
-texture_margin_right = 2.0
-texture_margin_bottom = 2.0
+texture = ExtResource("14_leunp")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_8um5k"]
 font = ExtResource("3_df05h")
@@ -48,11 +52,11 @@ font = ExtResource("3_df05h")
 font = ExtResource("3_df05h")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xim88"]
-texture = ExtResource("5_xim88")
-texture_margin_left = 2.0
-texture_margin_top = 2.0
-texture_margin_right = 2.0
-texture_margin_bottom = 2.0
+texture = ExtResource("11_6byu3")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
 
 [node name="Node2D" type="Node2D" unique_id=116451422]
 script = ExtResource("1_fh7cp")
@@ -171,7 +175,7 @@ theme_override_font_sizes/font_size = 48
 theme_override_styles/normal = SubResource("StyleBoxTexture_8saeu")
 theme_override_styles/hover = SubResource("StyleBoxTexture_koqhg")
 text = "MENU"
-icon = ExtResource("5_8um5k")
+icon = ExtResource("15_6byu3")
 expand_icon = true
 script = ExtResource("7_xim88")
 menu_bar = NodePath("../../MenuBar")
@@ -239,6 +243,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20
@@ -254,7 +262,7 @@ theme_override_font_sizes/font_size = 48
 theme_override_styles/normal = SubResource("StyleBoxTexture_8saeu")
 theme_override_styles/hover = SubResource("StyleBoxTexture_koqhg")
 text = "About me"
-icon = ExtResource("5_8um5k")
+icon = ExtResource("17_leunp")
 expand_icon = true
 script = ExtResource("8_cmrfp")
 popup_window = NodePath("../../../../AboutMe")
@@ -269,7 +277,7 @@ theme_override_font_sizes/font_size = 48
 theme_override_styles/normal = SubResource("StyleBoxTexture_8saeu")
 theme_override_styles/hover = SubResource("StyleBoxTexture_koqhg")
 text = "CV"
-icon = ExtResource("5_8um5k")
+icon = ExtResource("19_h1v62")
 expand_icon = true
 script = ExtResource("8_cmrfp")
 popup_window = NodePath("../../../../CV")
@@ -283,7 +291,7 @@ theme_override_font_sizes/font_size = 48
 theme_override_styles/normal = SubResource("StyleBoxTexture_8saeu")
 theme_override_styles/hover = SubResource("StyleBoxTexture_koqhg")
 text = "Proyects"
-icon = ExtResource("5_8um5k")
+icon = ExtResource("20_5hdia")
 expand_icon = true
 script = ExtResource("9_loo7a")
 
@@ -296,7 +304,7 @@ theme_override_font_sizes/font_size = 48
 theme_override_styles/normal = SubResource("StyleBoxTexture_8saeu")
 theme_override_styles/hover = SubResource("StyleBoxTexture_koqhg")
 text = "Contacts"
-icon = ExtResource("5_8um5k")
+icon = ExtResource("22_iqn0u")
 expand_icon = true
 script = ExtResource("8_cmrfp")
 popup_window = NodePath("../../../../Contacts")
