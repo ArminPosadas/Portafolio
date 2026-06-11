@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b5uw7oebdsher" path="res://Scripts/Inventory.gd" id="1_164yw"]
 [ext_resource type="Script" uid="uid://bqi3jbseq5jkd" path="res://Singletons/GameData.gd" id="2_164yw"]
+[ext_resource type="Shader" uid="uid://s0njckc0tjyr" path="res://Assets/Shaders/Underwater.gdshader" id="3_dnosv"]
 [ext_resource type="FontFile" uid="uid://u87bs8o77s8v" path="res://Fonts/VCR_OSD_MONO_1.001.ttf" id="3_p23kf"]
 [ext_resource type="Texture2D" uid="uid://d1bkapx4wc0u" path="res://Assets/Icon_Items/ButtonBarHighALT.png" id="3_won51"]
 [ext_resource type="Texture2D" uid="uid://bo5i0nfkjdge8" path="res://Assets/Sprites/Background.png" id="3_y2tfy"]
@@ -15,6 +16,13 @@
 [ext_resource type="Script" uid="uid://dr173wyeixf0" path="res://Scripts/InfoPanel.gd" id="8_l3cdh"]
 [ext_resource type="Script" uid="uid://rdj0ps06qa23" path="res://Scripts/video_stream_player.gd" id="9_l3cdh"]
 [ext_resource type="Texture2D" uid="uid://d2ewln4q3imxm" path="res://Assets/Icon_Items/Play.png" id="9_ry13m"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dnosv"]
+shader = ExtResource("3_dnosv")
+shader_parameter/water = Color(0.6537862, 0.78243506, 0.9152887, 1)
+shader_parameter/speed = 1.0
+shader_parameter/wave = 9.99999977648
+shader_parameter/warp = 2.49999994784532
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dnosv"]
 texture = ExtResource("3_won51")
@@ -152,8 +160,20 @@ repeat_size = Vector2(1920, 0)
 autoscroll = Vector2(-2, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Node2D/Background" unique_id=428491996]
+material = SubResource("ShaderMaterial_dnosv")
 scale = Vector2(1, 0.89537036)
 texture = ExtResource("3_y2tfy")
+centered = false
+
+[node name="BackRocks" type="Parallax2D" parent="Node2D" unique_id=1719067898]
+repeat_size = Vector2(1920, 0)
+autoscroll = Vector2(-50, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/BackRocks" unique_id=1904830650]
+material = SubResource("ShaderMaterial_dnosv")
+position = Vector2(0.99999994, 287.00003)
+scale = Vector2(1, 0.89537036)
+texture = ExtResource("5_a7syu")
 centered = false
 
 [node name="FrontRocks" type="Parallax2D" parent="Node2D" unique_id=851567259]
@@ -162,19 +182,10 @@ repeat_size = Vector2(1920, 0)
 autoscroll = Vector2(-25, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Node2D/FrontRocks" unique_id=30898632]
+material = SubResource("ShaderMaterial_dnosv")
 position = Vector2(0, 360.00003)
 scale = Vector2(1, 0.89537036)
 texture = ExtResource("4_dnosv")
-centered = false
-
-[node name="BackRocks" type="Parallax2D" parent="Node2D" unique_id=1719067898]
-repeat_size = Vector2(1920, 0)
-autoscroll = Vector2(-50, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="Node2D/BackRocks" unique_id=1904830650]
-position = Vector2(0, 287.00003)
-scale = Vector2(1, 0.89537036)
-texture = ExtResource("5_a7syu")
 centered = false
 
 [node name="Projects" type="ScrollContainer" parent="." unique_id=1077229267]
