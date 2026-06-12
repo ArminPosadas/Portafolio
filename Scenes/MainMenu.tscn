@@ -6,13 +6,13 @@
 [ext_resource type="Script" uid="uid://dwbyi8immmwln" path="res://Scripts/ButtonPopUp.gd" id="8_cmrfp"]
 [ext_resource type="Texture2D" uid="uid://dihki0l6fgfbe" path="res://Assets/Sprites/Currículum hoja de vida laboral profesional formal azul.png" id="9_cmrfp"]
 [ext_resource type="Script" uid="uid://ddl2aqh0uk2go" path="res://Scripts/NextScene.gd" id="9_loo7a"]
-[ext_resource type="Texture2D" uid="uid://cn0ifsfiv5rey" path="res://Assets/Icon_Items/MenusBar.png" id="11_6byu3"]
+[ext_resource type="Texture2D" uid="uid://cn0ifsfiv5rey" path="res://Assets/Sprites/MenusBar.png" id="11_6byu3"]
 [ext_resource type="Texture2D" uid="uid://cttvr34rmw8v3" path="res://Assets/Sprites/BackgroundPF1.png" id="12_fh7cp"]
 [ext_resource type="Script" uid="uid://ctvpyxvbkdgmv" path="res://Scripts/LinkData.gd" id="12_rrcx7"]
-[ext_resource type="Texture2D" uid="uid://cdo7ffnque38c" path="res://Assets/Icon_Items/ButtonBar.png" id="13_6byu3"]
+[ext_resource type="Texture2D" uid="uid://cdo7ffnque38c" path="res://Assets/Sprites/ButtonBar.png" id="13_6byu3"]
 [ext_resource type="Texture2D" uid="uid://c6fn86v3tdg0o" path="res://Assets/Sprites/Clouds1.png" id="13_8e205"]
 [ext_resource type="Texture2D" uid="uid://m5d70634rr3v" path="res://Assets/Sprites/Clouds2.png" id="14_7467j"]
-[ext_resource type="Texture2D" uid="uid://i7yo6s4wwc52" path="res://Assets/Icon_Items/ButtonBarHigh.png" id="14_leunp"]
+[ext_resource type="Texture2D" uid="uid://i7yo6s4wwc52" path="res://Assets/Sprites/ButtonBarHigh.png" id="14_leunp"]
 [ext_resource type="Texture2D" uid="uid://b4dgoq3l4wyl" path="res://Assets/Sprites/Clouds3.png" id="15_2x1g0"]
 [ext_resource type="Texture2D" uid="uid://da448e586k7g6" path="res://Assets/Icon_Items/Menu.png" id="15_6byu3"]
 [ext_resource type="Texture2D" uid="uid://boaea2y6fmtfn" path="res://Assets/Sprites/Waves.png" id="16_7v4os"]
@@ -379,7 +379,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/h_separation = 150
 theme_override_constants/v_separation = 150
-columns = 2
 
 [connection signal="pressed" from="LowBar/Button" to="LowBar/Button" method="_on_pressed"]
 [connection signal="pressed" from="MenuBar/Panel2/VBoxContainer/AbMe" to="MenuBar/Panel2/VBoxContainer/AbMe" method="_on_pressed"]

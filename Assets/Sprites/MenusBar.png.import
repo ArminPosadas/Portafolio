@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cw8upj865edac"
-path="res://.godot/imported/LowBar-Highlight.png-d6c75dde9dbfd0df99cd123adf8cbdbe.ctex"
+uid="uid://cn0ifsfiv5rey"
+path="res://.godot/imported/MenusBar.png-9e0afd3b83a38baff3005082ee0d474b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/LowBar-Highlight.png"
-dest_files=["res://.godot/imported/LowBar-Highlight.png-d6c75dde9dbfd0df99cd123adf8cbdbe.ctex"]
+source_file="res://Assets/Sprites/MenusBar.png"
+dest_files=["res://.godot/imported/MenusBar.png-9e0afd3b83a38baff3005082ee0d474b.ctex"]
 
 [params]
 

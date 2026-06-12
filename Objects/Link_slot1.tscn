@@ -12,10 +12,11 @@ offset_bottom = 150.0
 [node name="Icon" type="TextureRect" parent="." unique_id=1147394928]
 layout_mode = 0
 offset_top = 25.0
-offset_right = 150.0
-offset_bottom = 175.0
+offset_right = 100.0
+offset_bottom = 125.0
 size_flags_vertical = 3
 texture = ExtResource("1_141cb")
+stretch_mode = 4
 
 [node name="LinkButton" type="LinkButton" parent="." unique_id=437479277]
 layout_mode = 1

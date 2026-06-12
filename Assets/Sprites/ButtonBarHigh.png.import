@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cs3gqb7pwd44b"
-path="res://.godot/imported/windows-7-background-imfecqv6cnsicbx4.jpg-a4193fb2d77bbe4ff31917c5cc6d5a2c.ctex"
+uid="uid://i7yo6s4wwc52"
+path="res://.godot/imported/ButtonBarHigh.png-6a395e283068fbd1749c0729b6849168.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/windows-7-background-imfecqv6cnsicbx4.jpg"
-dest_files=["res://.godot/imported/windows-7-background-imfecqv6cnsicbx4.jpg-a4193fb2d77bbe4ff31917c5cc6d5a2c.ctex"]
+source_file="res://Assets/Sprites/ButtonBarHigh.png"
+dest_files=["res://.godot/imported/ButtonBarHigh.png-6a395e283068fbd1749c0729b6849168.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1bkapx4wc0u"
-path="res://.godot/imported/ButtonBarHighALT.png-60d8b45ac67e365931429b283ec543b1.ctex"
+uid="uid://dao47njjtvfsj"
+path="res://.godot/imported/MenusBarALT.png-af4606ec501907f07dd8f4c29523ef69.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Icon_Items/ButtonBarHighALT.png"
-dest_files=["res://.godot/imported/ButtonBarHighALT.png-60d8b45ac67e365931429b283ec543b1.ctex"]
+source_file="res://Assets/Sprites/MenusBarALT.png"
+dest_files=["res://.godot/imported/MenusBarALT.png-af4606ec501907f07dd8f4c29523ef69.ctex"]
 
 [params]
 
