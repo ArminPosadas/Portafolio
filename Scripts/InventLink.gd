@@ -3,7 +3,7 @@ extends Node2D
 var template_inv_slot = preload("res://Objects/Link_slot1.tscn")
 var link_data = {}
 
-@onready var gridcontainer = get_node("Contacts/MarginContainer/ScrollContainer/GridContainer")
+@onready var gridcontainer = get_node("Contacts/Library/MarginContainer/ScrollContainer/GridContainer")
 
 func _ready():
 	load_link_data()

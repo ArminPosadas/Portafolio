@@ -23,6 +23,13 @@
 [ext_resource type="Texture2D" uid="uid://kecuaroc3rm7" path="res://Assets/Icon_Items/CV.png" id="19_h1v62"]
 [ext_resource type="Texture2D" uid="uid://dlnhhctw6nd1n" path="res://Assets/Icon_Items/Proyects.png" id="20_5hdia"]
 [ext_resource type="Texture2D" uid="uid://b2rnluhpy5vf8" path="res://Assets/Icon_Items/Contacts.png" id="22_iqn0u"]
+[ext_resource type="Shader" uid="uid://bf8ss4oo1wend" path="res://Assets/Shaders/Scroll.gdshader" id="24_h1v62"]
+[ext_resource type="Shader" uid="uid://bcyilgbbjupeu" path="res://Assets/Shaders/Scroll2.gdshader" id="24_iqn0u"]
+[ext_resource type="Texture2D" uid="uid://bxtssdoivl4ii" path="res://Assets/Sprites/GenericBG2.png" id="25_3u44c"]
+[ext_resource type="Script" uid="uid://ce77rrjr8oo51" path="res://Scenes/PDFButton.gd" id="25_ux20s"]
+[ext_resource type="Texture2D" uid="uid://bglbwy0djd6m0" path="res://Assets/Sprites/GenericBG1.png" id="27_bxv1r"]
+[ext_resource type="Texture2D" uid="uid://dao47njjtvfsj" path="res://Assets/Sprites/MenusBarALT.png" id="28_3u44c"]
+[ext_resource type="Texture2D" uid="uid://d1bkapx4wc0u" path="res://Assets/Sprites/ButtonBarHighALT.png" id="29_bxv1r"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ghw46"]
 texture = ExtResource("11_6byu3")
@@ -53,6 +60,56 @@ font = ExtResource("3_df05h")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xim88"]
 texture = ExtResource("11_6byu3")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ke15f"]
+texture = ExtResource("13_6byu3")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_311ux"]
+texture = ExtResource("29_bxv1r")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pnils"]
+texture = ExtResource("14_leunp")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5hdia"]
+shader = ExtResource("24_iqn0u")
+shader_parameter/speed = -0.15
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ux20s"]
+shader = ExtResource("24_h1v62")
+shader_parameter/speed = 0.1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bxv1r"]
+texture = ExtResource("28_3u44c")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ux20s"]
+texture = ExtResource("29_bxv1r")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3u44c"]
+texture = ExtResource("28_3u44c")
 texture_margin_left = 5.0
 texture_margin_top = 5.0
 texture_margin_right = 5.0
@@ -328,57 +385,233 @@ texture = ExtResource("9_cmrfp")
 expand_mode = 4
 metadata/_edit_use_anchors_ = true
 
+[node name="Button" type="Button" parent="CV" unique_id=2054514823]
+offset_right = 200.0
+offset_bottom = 50.0
+theme_override_fonts/font = ExtResource("3_df05h")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ke15f")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_311ux")
+theme_override_styles/hover = SubResource("StyleBoxTexture_pnils")
+text = "DOWNLOAD PDF"
+script = ExtResource("25_ux20s")
+
 [node name="AboutMe" type="Window" parent="." unique_id=1830636092]
 oversampling_override = 1.0
 title = "About me"
 initial_position = 1
-size = Vector2i(800, 900)
+size = Vector2i(750, 650)
 visible = false
+unresizable = true
+
+[node name="ColorRect" type="ColorRect" parent="AboutMe" unique_id=1009158679]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.21767196, 0.071864836, 0.35009772, 1)
+
+[node name="TextureRect2" type="TextureRect" parent="AboutMe" unique_id=1358799724]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_5hdia")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("25_3u44c")
+stretch_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="AboutMe" unique_id=342920795]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_ux20s")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("27_bxv1r")
+stretch_mode = 1
+
+[node name="Info" type="Panel" parent="AboutMe" unique_id=1355944783]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -181.5
+offset_top = -45.0
+offset_right = 181.5
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_bxv1r")
+
+[node name="Label" type="Label" parent="AboutMe/Info" unique_id=960027146]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_df05h")
+theme_override_font_sizes/font_size = 21
+text = "Armin Posadas Flores"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="Panel" parent="AboutMe" unique_id=1993811536]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -345.0
+offset_top = 27.0
+offset_right = 345.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_bxv1r")
+
+[node name="Label" type="Label" parent="AboutMe/Description" unique_id=493113592]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_df05h")
+theme_override_font_sizes/font_size = 21
+text = "I'm a recently graduated video game developer with experience in Game Design, Scripting, Visual Effects and even a little bit of sprite art.
+
+Always eager to learn new skills and take on fresh creative challenges. I adapt easily to working with large and small teams aswell as always keeping in contact with the rest of them for any needs"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="PFP" type="Panel" parent="AboutMe" unique_id=1532357761]
+anchors_preset = -1
+anchor_left = 0.34375
+anchor_top = 0.30769232
+anchor_right = 0.65625
+anchor_bottom = 0.6923077
+offset_top = -184.0
+offset_bottom = -184.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_bxv1r")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="AboutMe/PFP" unique_id=943218393]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("17_leunp")
 
 [node name="Contacts" type="Window" parent="." unique_id=851157228]
 oversampling_override = 1.0
 title = "Contact Me"
 initial_position = 1
-size = Vector2i(800, 900)
+size = Vector2i(1000, 300)
 visible = false
+unresizable = true
 
-[node name="ColorRect" type="ColorRect" parent="Contacts" unique_id=1714564355]
+[node name="ColorRect" type="ColorRect" parent="Contacts" unique_id=1675823642]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0.21767196, 0.071864836, 0.35009772, 1)
 
-[node name="Label" type="Label" parent="Contacts" unique_id=1412967865]
+[node name="TextureRect2" type="TextureRect" parent="Contacts" unique_id=1066024648]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_5hdia")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("25_3u44c")
+stretch_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="Contacts" unique_id=3932296]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_ux20s")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("27_bxv1r")
+stretch_mode = 1
+
+[node name="Library" type="Panel" parent="Contacts" unique_id=501644687]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -425.0
+offset_top = -73.0
+offset_right = 425.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ux20s")
+
+[node name="MarginContainer" type="MarginContainer" parent="Contacts/Library" unique_id=794097647]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 34.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Contacts/Library/MarginContainer" unique_id=1591327331]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="Contacts/Library/MarginContainer/ScrollContainer" unique_id=557218976]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 50
+theme_override_constants/v_separation = 100
+columns = 3
+
+[node name="Header" type="Panel" parent="Contacts" unique_id=308760302]
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 77.0
 grow_horizontal = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 54
-text = "My contacts"
-horizontal_alignment = 1
-vertical_alignment = 1
+theme_override_styles/panel = SubResource("StyleBoxTexture_3u44c")
 
-[node name="MarginContainer" type="MarginContainer" parent="Contacts" unique_id=794097647]
+[node name="Label" type="Label" parent="Contacts/Header" unique_id=1412967865]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 167.0
-offset_top = 151.0
-offset_right = -183.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="ScrollContainer" type="ScrollContainer" parent="Contacts/MarginContainer" unique_id=1591327331]
-layout_mode = 2
-
-[node name="GridContainer" type="GridContainer" parent="Contacts/MarginContainer/ScrollContainer" unique_id=557218976]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/h_separation = 150
-theme_override_constants/v_separation = 150
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_df05h")
+theme_override_font_sizes/font_size = 41
+text = "CONTACTS"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="LowBar/Button" to="LowBar/Button" method="_on_pressed"]
 [connection signal="pressed" from="MenuBar/Panel2/VBoxContainer/AbMe" to="MenuBar/Panel2/VBoxContainer/AbMe" method="_on_pressed"]
@@ -386,5 +619,6 @@ theme_override_constants/v_separation = 150
 [connection signal="pressed" from="MenuBar/Panel2/VBoxContainer/P" to="MenuBar/Panel2/VBoxContainer/P" method="_on_pressed"]
 [connection signal="pressed" from="MenuBar/Panel2/VBoxContainer/C" to="MenuBar/Panel2/VBoxContainer/C" method="_on_pressed"]
 [connection signal="close_requested" from="CV" to="MenuBar/Panel2/VBoxContainer/CV" method="_on_cv_close_requested"]
+[connection signal="pressed" from="CV/Button" to="CV/Button" method="_on_pressed"]
 [connection signal="close_requested" from="AboutMe" to="MenuBar/Panel2/VBoxContainer/AbMe" method="_on_about_me_close_requested"]
 [connection signal="close_requested" from="Contacts" to="MenuBar/Panel2/VBoxContainer/C" method="_on_contacts_close_requested"]
