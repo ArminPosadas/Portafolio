@@ -23,10 +23,10 @@
 [ext_resource type="Texture2D" uid="uid://kecuaroc3rm7" path="res://Assets/Icon_Items/CV.png" id="19_h1v62"]
 [ext_resource type="Texture2D" uid="uid://dlnhhctw6nd1n" path="res://Assets/Icon_Items/Proyects.png" id="20_5hdia"]
 [ext_resource type="Texture2D" uid="uid://b2rnluhpy5vf8" path="res://Assets/Icon_Items/Contacts.png" id="22_iqn0u"]
+[ext_resource type="Script" uid="uid://ce77rrjr8oo51" path="res://Scripts/PDFButton.gd" id="23_ux20s"]
 [ext_resource type="Shader" uid="uid://bf8ss4oo1wend" path="res://Assets/Shaders/Scroll.gdshader" id="24_h1v62"]
 [ext_resource type="Shader" uid="uid://bcyilgbbjupeu" path="res://Assets/Shaders/Scroll2.gdshader" id="24_iqn0u"]
 [ext_resource type="Texture2D" uid="uid://bxtssdoivl4ii" path="res://Assets/Sprites/GenericBG2.png" id="25_3u44c"]
-[ext_resource type="Script" uid="uid://ce77rrjr8oo51" path="res://Scenes/PDFButton.gd" id="25_ux20s"]
 [ext_resource type="Texture2D" uid="uid://bglbwy0djd6m0" path="res://Assets/Sprites/GenericBG1.png" id="27_bxv1r"]
 [ext_resource type="Texture2D" uid="uid://dao47njjtvfsj" path="res://Assets/Sprites/MenusBarALT.png" id="28_3u44c"]
 [ext_resource type="Texture2D" uid="uid://d1bkapx4wc0u" path="res://Assets/Sprites/ButtonBarHighALT.png" id="29_bxv1r"]
@@ -373,7 +373,17 @@ initial_position = 1
 size = Vector2i(700, 900)
 visible = false
 
-[node name="TextureRect" type="TextureRect" parent="CV" unique_id=2141205977]
+[node name="Control" type="Control" parent="CV" unique_id=435425267]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("23_ux20s")
+
+[node name="TextureRect" type="TextureRect" parent="CV/Control" unique_id=2141205977]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -385,15 +395,25 @@ texture = ExtResource("9_cmrfp")
 expand_mode = 4
 metadata/_edit_use_anchors_ = true
 
-[node name="Button" type="Button" parent="CV" unique_id=2054514823]
-offset_right = 200.0
+[node name="DownloadButton" type="Button" parent="CV/Control" unique_id=2054514823]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_right = 100.0
 offset_bottom = 50.0
+grow_horizontal = 2
 theme_override_fonts/font = ExtResource("3_df05h")
 theme_override_styles/normal = SubResource("StyleBoxTexture_ke15f")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_311ux")
 theme_override_styles/hover = SubResource("StyleBoxTexture_pnils")
 text = "DOWNLOAD PDF"
-script = ExtResource("25_ux20s")
+
+[node name="StatusLabel" type="Label" parent="CV/Control" unique_id=1084829813]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
 
 [node name="AboutMe" type="Window" parent="." unique_id=1830636092]
 oversampling_override = 1.0
@@ -619,6 +639,6 @@ vertical_alignment = 1
 [connection signal="pressed" from="MenuBar/Panel2/VBoxContainer/P" to="MenuBar/Panel2/VBoxContainer/P" method="_on_pressed"]
 [connection signal="pressed" from="MenuBar/Panel2/VBoxContainer/C" to="MenuBar/Panel2/VBoxContainer/C" method="_on_pressed"]
 [connection signal="close_requested" from="CV" to="MenuBar/Panel2/VBoxContainer/CV" method="_on_cv_close_requested"]
-[connection signal="pressed" from="CV/Button" to="CV/Button" method="_on_pressed"]
+[connection signal="pressed" from="CV/Control/DownloadButton" to="CV/Control" method="_on_download_button_pressed"]
 [connection signal="close_requested" from="AboutMe" to="MenuBar/Panel2/VBoxContainer/AbMe" method="_on_about_me_close_requested"]
 [connection signal="close_requested" from="Contacts" to="MenuBar/Panel2/VBoxContainer/C" method="_on_contacts_close_requested"]
