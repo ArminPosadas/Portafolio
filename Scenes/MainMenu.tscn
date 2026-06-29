@@ -639,6 +639,5 @@ vertical_alignment = 1
 [connection signal="pressed" from="MenuBar/Panel2/VBoxContainer/P" to="MenuBar/Panel2/VBoxContainer/P" method="_on_pressed"]
 [connection signal="pressed" from="MenuBar/Panel2/VBoxContainer/C" to="MenuBar/Panel2/VBoxContainer/C" method="_on_pressed"]
 [connection signal="close_requested" from="CV" to="MenuBar/Panel2/VBoxContainer/CV" method="_on_cv_close_requested"]
-[connection signal="pressed" from="CV/Control/DownloadButton" to="CV/Control" method="_on_download_button_pressed"]
 [connection signal="close_requested" from="AboutMe" to="MenuBar/Panel2/VBoxContainer/AbMe" method="_on_about_me_close_requested"]
 [connection signal="close_requested" from="Contacts" to="MenuBar/Panel2/VBoxContainer/C" method="_on_contacts_close_requested"]
