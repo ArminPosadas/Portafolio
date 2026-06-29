@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="test"
+config/name="Armin Posadas Flores Portolio"
 run/main_scene="uid://dyqups7e1qmx8"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"

@@ -14,8 +14,8 @@
 [ext_resource type="Script" uid="uid://dytxmxnci61xe" path="res://Scripts/button.gd" id="6_21aso"]
 [ext_resource type="Script" uid="uid://bogbqwn23tp0l" path="res://Scripts/GenrePanel.gd" id="7_d14eb"]
 [ext_resource type="Script" uid="uid://dr173wyeixf0" path="res://Scripts/InfoPanel.gd" id="8_l3cdh"]
-[ext_resource type="Script" uid="uid://rdj0ps06qa23" path="res://Scripts/video_stream_player.gd" id="9_l3cdh"]
 [ext_resource type="Texture2D" uid="uid://d2ewln4q3imxm" path="res://Assets/Icon_Items/Play.png" id="9_ry13m"]
+[ext_resource type="Texture2D" uid="uid://j3ofox7phxo8" path="res://Assets/Icon_Items/Stop.png" id="15_dnosv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dnosv"]
 shader = ExtResource("3_dnosv")
@@ -458,14 +458,46 @@ offset_bottom = 965.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_164yw")
 script = ExtResource("8_l3cdh")
 
-[node name="Pause" type="Button" parent="InfoPanel" unique_id=1264268919]
+[node name="PrevVideoButton" type="Button" parent="InfoPanel" unique_id=1264268919]
 layout_mode = 0
-offset_left = 290.0
+offset_left = 386.0
 offset_top = 753.0
-offset_right = 354.0
+offset_right = 450.0
+offset_bottom = 817.0
+icon = ExtResource("15_dnosv")
+icon_alignment = 1
+
+[node name="NextVideoButton" type="Button" parent="InfoPanel" unique_id=864751043]
+layout_mode = 0
+offset_left = 457.0
+offset_top = 753.0
+offset_right = 521.0
 offset_bottom = 817.0
 icon = ExtResource("9_ry13m")
 icon_alignment = 1
+
+[node name="CurrentVideo" type="Panel" parent="InfoPanel" unique_id=1650591007]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 753.0
+offset_right = 306.0
+offset_bottom = 817.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_ry13m")
+
+[node name="VideoCounterLabel" type="Label" parent="InfoPanel/CurrentVideo" unique_id=2104635326]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_p23kf")
+theme_override_font_sizes/font_size = 20
+autowrap_mode = 2
 
 [node name="Descripcion" type="Panel" parent="InfoPanel" unique_id=1664058769]
 layout_mode = 0
@@ -508,7 +540,6 @@ scale = Vector2(0.442, 0.479)
 autoplay = true
 expand = true
 loop = true
-script = ExtResource("9_l3cdh")
 
 [node name="ColorRect" type="ColorRect" parent="InfoPanel" unique_id=1152579527]
 z_index = 2
@@ -570,5 +601,6 @@ vertical_alignment = 1
 [connection signal="pressed" from="BGenrePanel/ScrollContainer/VBoxContainer/3DPuzzle" to="BGenrePanel" method="_on_3d_puzzle_button_pressed"]
 [connection signal="pressed" from="BGenrePanel/ScrollContainer/VBoxContainer/3DRPG" to="BGenrePanel" method="_on_3d_rpg_button_pressed"]
 [connection signal="pressed" from="BGenrePanel/ScrollContainer/VBoxContainer/LifeSim" to="BGenrePanel" method="_on_life_sim_button_pressed"]
-[connection signal="button_down" from="InfoPanel/Pause" to="InfoPanel/Video/VideoStreamPlayer" method="_on_pause_button_down"]
+[connection signal="pressed" from="InfoPanel/PrevVideoButton" to="InfoPanel" method="_on_prev_video_pressed"]
+[connection signal="pressed" from="InfoPanel/NextVideoButton" to="InfoPanel" method="_on_next_video_pressed"]
 [connection signal="pressed" from="InfoPanel/Close" to="InfoPanel" method="_on_close_pressed"]
