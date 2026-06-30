@@ -16,8 +16,10 @@
 [ext_resource type="Texture2D" uid="uid://b4dgoq3l4wyl" path="res://Assets/Sprites/Clouds3.png" id="15_2x1g0"]
 [ext_resource type="Texture2D" uid="uid://da448e586k7g6" path="res://Assets/Icon_Items/Menu.png" id="15_6byu3"]
 [ext_resource type="Texture2D" uid="uid://boaea2y6fmtfn" path="res://Assets/Sprites/Waves.png" id="16_7v4os"]
+[ext_resource type="Script" uid="uid://c4kahe8xaom83" path="res://Scripts/time.gd" id="17_ke15f"]
 [ext_resource type="Texture2D" uid="uid://b8fmfqe2k83u4" path="res://Assets/Icon_Items/AboutMe.png" id="17_leunp"]
 [ext_resource type="Texture2D" uid="uid://bact7rublwset" path="res://Assets/Sprites/Waves2.png" id="17_pjscj"]
+[ext_resource type="Script" uid="uid://b6q385fbm4x6o" path="res://Scripts/date.gd" id="18_311ux"]
 [ext_resource type="Texture2D" uid="uid://di6i06ngrdyl7" path="res://Assets/Sprites/Waves3.png" id="18_m7n2d"]
 [ext_resource type="Texture2D" uid="uid://cyii216rnfji4" path="res://Assets/Sprites/Waves4.png" id="19_65hh5"]
 [ext_resource type="Texture2D" uid="uid://kecuaroc3rm7" path="res://Assets/Icon_Items/CV.png" id="19_h1v62"]
@@ -54,6 +56,7 @@ texture_margin_bottom = 6.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_8um5k"]
 font = ExtResource("3_df05h")
+font_size = 20
 
 [sub_resource type="LabelSettings" id="LabelSettings_853f1"]
 font = ExtResource("3_df05h")
@@ -258,10 +261,11 @@ alignment = 2
 [node name="Time" type="Label" parent="LowBar/TimePanel/VBoxContainer" unique_id=1088356312]
 layout_mode = 2
 size_flags_vertical = 3
-text = "4:15 PM"
+text = "00:00 PM"
 label_settings = SubResource("LabelSettings_8um5k")
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("17_ke15f")
 
 [node name="Date" type="Label" parent="LowBar/TimePanel/VBoxContainer" unique_id=365017279]
 layout_mode = 2
@@ -270,6 +274,7 @@ text = "03/03/2026"
 label_settings = SubResource("LabelSettings_853f1")
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("18_311ux")
 
 [node name="MenuBar" type="Panel" parent="." unique_id=690145025]
 z_index = 4
@@ -372,6 +377,7 @@ title = "Curriculum Vitae"
 initial_position = 1
 size = Vector2i(700, 900)
 visible = false
+unresizable = true
 
 [node name="Control" type="Control" parent="CV" unique_id=435425267]
 layout_mode = 3
