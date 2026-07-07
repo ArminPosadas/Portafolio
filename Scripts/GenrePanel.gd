@@ -18,7 +18,8 @@ extends Panel
 
 # Reference to the Projects ScrollContainer
 @onready var projects_scroll: ScrollContainer = $"../Projects"
-@onready var sound_effect: AudioStreamPlayer = $"../Click"
+@onready var click_effect: AudioStreamPlayer = $"../Click"
+@onready var hover_effect: AudioStreamPlayer = $"../Hover"
 
 # Signals to communicate with Inventory script
 signal filter_changed(genre: String)
@@ -72,58 +73,61 @@ func get_all_panels() -> Dictionary:
 
 # Genre button handlers
 func _on_tower_defense_button_pressed() -> void:
-	sound_effect.play()
+	click_effect.play()
 	_on_genre_button_pressed("TowerDefense")
 
 func _on_ai_behaviour_button_pressed() -> void:
-	sound_effect.play()
+	click_effect.play()
 	_on_genre_button_pressed("AIBehaviour")
 
 func _on_vfx_button_pressed() -> void:
-	sound_effect.play()
+	click_effect.play()
 	_on_genre_button_pressed("VFX")
 
 func _on_web_page_button_pressed() -> void:
-	sound_effect.play()
+	click_effect.play()
 	_on_genre_button_pressed("WebPage")
 
 func _on_2d_fighting_button_pressed() -> void:
-	sound_effect.play()
+	click_effect.play()
 	_on_genre_button_pressed("2DFighting")
 
 func _on_3d_puzzle_button_pressed() -> void:
-	sound_effect.play()
+	click_effect.play()
 	_on_genre_button_pressed("3DPuzzle")
 
 func _on_3d_rpg_button_pressed() -> void:
-	sound_effect.play()
+	click_effect.play()
 	_on_genre_button_pressed("3DRPG")
 
 func _on_life_sim_button_pressed() -> void:
-	sound_effect.play()
+	click_effect.play()
 	_on_genre_button_pressed("LifeSim")
 
 func _on_genre_button_pressed(genre: String) -> void:
-	sound_effect.play()
+	click_effect.play()
 	filter_changed.emit(genre)
 
 func _on_show_all_button_pressed() -> void:
-	sound_effect.play()
+	click_effect.play()
 	show_all_requested.emit()
 
 # Panel toggle handlers
 func _on_godot_toggle_pressed() -> void:
-	sound_effect.play()
+	click_effect.play()
 	toggle_panel("Godot")
 
 func _on_unity_toggle_pressed() -> void:
-	sound_effect.play()
+	click_effect.play()
 	toggle_panel("Unity")
 
 func _on_unreal_toggle_pressed() -> void:
-	sound_effect.play()
+	click_effect.play()
 	toggle_panel("Unreal")
 
 func _on_web_toggle_pressed() -> void:
-	sound_effect.play()
+	click_effect.play()
 	toggle_panel("Web")
+
+func _on_mouse_entered() -> void:
+	hover_effect.play()

@@ -5,7 +5,8 @@ extends Button
 @export var animation_duration: float = 0.5
 @export var cooldown_time: float = 0.8
 
-@onready var sound_effect: AudioStreamPlayer = $"../../Click"
+@onready var click_effect: AudioStreamPlayer = $"../../Click"
+@onready var hover_effect: AudioStreamPlayer = $"../../Hover"
 
 var lowered_position: Vector2
 var is_raised: bool = false
@@ -24,7 +25,7 @@ func _ready() -> void:
 
 
 func _on_button_pressed() -> void:
-	sound_effect.play()
+	click_effect.play()
 	if on_cooldown or not menu_bar:
 		return
 	
@@ -57,3 +58,7 @@ func set_positions(lowered: Vector2, raised: Vector2) -> void:
 	
 	if menu_bar:
 		menu_bar.position = lowered_position if not is_raised else raised_position
+
+
+func _on_mouse_entered() -> void:
+	hover_effect.play()

@@ -1,11 +1,15 @@
 [gd_scene format=3 uid="uid://civrifovioxv1"]
 
+[ext_resource type="Script" uid="uid://cw3v1k2q73vfg" path="res://Scripts/ButtonSFX.gd" id="1_eoud3"]
 [ext_resource type="Texture2D" uid="uid://qaoqkk6sla2l" path="res://Assets/Sprites/Sprite-0001.png" id="1_s6hse"]
 [ext_resource type="FontFile" uid="uid://u87bs8o77s8v" path="res://Assets/Fonts/VCR_OSD_MONO_1.001.ttf" id="2_ohmkr"]
+[ext_resource type="AudioStream" uid="uid://cobcg3ro0kjb4" path="res://Assets/Sounds/click.ogg" id="4_kfwmy"]
+[ext_resource type="AudioStream" uid="uid://cdkswhas6newd" path="res://Assets/Sounds/focus.wav" id="5_ojmp8"]
 
 [node name="slot0" type="Button" unique_id=1588561096]
 offset_right = 160.0
 offset_bottom = 180.0
+script = ExtResource("1_eoud3")
 
 [node name="Icon" type="TextureRect" parent="." unique_id=2098184419]
 custom_minimum_size = Vector2(100, 100)
@@ -36,3 +40,12 @@ theme_override_fonts/font = ExtResource("2_ohmkr")
 text = "Description"
 horizontal_alignment = 1
 autowrap_mode = 3
+
+[node name="Click" type="AudioStreamPlayer" parent="." unique_id=804330954]
+stream = ExtResource("4_kfwmy")
+
+[node name="Hover" type="AudioStreamPlayer" parent="." unique_id=785528560]
+stream = ExtResource("5_ojmp8")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -4,7 +4,8 @@ extends Panel
 @onready var video_player: VideoStreamPlayer = $Video/VideoStreamPlayer
 @onready var animation_player: AnimationPlayer = $Transition
 @onready var video_counter_label: Label = $CurrentVideo/VideoCounterLabel
-@onready var sound_effect: AudioStreamPlayer = $"../Click"
+@onready var click_effect: AudioStreamPlayer = $"../Click"
+@onready var hover_effect: AudioStreamPlayer = $"../Hover"
 
 var _pending_item_id: String = ""
 var _pending_item_info: Dictionary = {}
@@ -27,7 +28,6 @@ func _ready() -> void:
 
 # Public method to show item details
 func show_item_details(item_id: String, item_info: Dictionary) -> void:
-	sound_effect.play()
 	_pending_item_id = item_id
 	_pending_item_info = item_info
 	
@@ -155,7 +155,7 @@ func _update_video_buttons() -> void:
 		next_button.disabled = true
 
 func _on_prev_video_pressed() -> void:
-	sound_effect.play()
+	click_effect.play()
 	if _video_list.is_empty():
 		return
 	
@@ -168,7 +168,7 @@ func _on_prev_video_pressed() -> void:
 	_update_video_buttons()
 
 func _on_next_video_pressed() -> void:
-	sound_effect.play()
+	click_effect.play()
 	if _video_list.is_empty():
 		return
 	
@@ -185,7 +185,7 @@ func hide_panel() -> void:
 	active = false
 
 func _on_close_pressed() -> void:
-	sound_effect.play()
+	click_effect.play()
 	_is_closing = true  # Set flag to prevent content update
 	animation_player.play_backwards("move_info")
 	active = false
@@ -202,3 +202,7 @@ func _on_close_pressed() -> void:
 		next_button.disabled = true
 	if video_counter_label:
 		video_counter_label.visible = false
+
+
+func _on_button_mouse_entered() -> void:
+	hover_effect.play()
