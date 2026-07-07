@@ -13,7 +13,7 @@
 	"Type": "Unity",
 	"Genres": ["2DFighting", "AIBehaviour"],
 	"Description": "An example of multiple types of AI behaviour for a CPU enemy, made using the  FSM method, having 6 actions to choose from each AI has its own script that just grabs what it needs, AI type 1 is more aggressive up close lowering the difficulty if the player dies a lot, AI type 2 is more defensive increasing the difficulty if the enemy dies a lot and AI type 3 being more evasive from the player while using distance attacks.",
-	"Videos": ["EDIT-FightingAI-Unity.ogv", "EDIT-FightingAI-Unity-2.ogv"]
+	"Videos": ["EDIT-FightingAI-Unity.ogv"]
   },
   "3": {
 	"Name": "GLTFWeb",
@@ -60,7 +60,7 @@
 	"Summary": "Interactive WebPage made in Godot",
 	"Type": "Godot",
 	"Genres": ["WebPage"],
-	"Description": "A Web site made in Godot by exporting the package to HTML5, being able to show multiple windows, having a wide interactive system, easy to use and modify.",
+	"Description": "A Web site made in Godot to display my contributions to other works, taking the look of an old operating system this proyect offers a dynamic way to insert proyects throught json files displaying icons, descriptions and even videos. A short function that allows you to see certain types of genres or games made by certain game engines.",
 	"Videos": []
   }
 }

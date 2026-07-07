@@ -5,6 +5,8 @@ extends Button
 @export var animation_duration: float = 0.5
 @export var cooldown_time: float = 0.8
 
+@onready var sound_effect: AudioStreamPlayer = $"../../Click"
+
 var lowered_position: Vector2
 var is_raised: bool = false
 var on_cooldown: bool = false
@@ -22,6 +24,7 @@ func _ready() -> void:
 
 
 func _on_button_pressed() -> void:
+	sound_effect.play()
 	if on_cooldown or not menu_bar:
 		return
 	

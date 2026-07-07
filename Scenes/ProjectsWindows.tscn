@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b5uw7oebdsher" path="res://Scripts/Inventory.gd" id="1_164yw"]
 [ext_resource type="Script" uid="uid://bqi3jbseq5jkd" path="res://Singletons/GameData.gd" id="2_164yw"]
 [ext_resource type="Shader" uid="uid://s0njckc0tjyr" path="res://Assets/Shaders/Underwater.gdshader" id="3_dnosv"]
-[ext_resource type="FontFile" uid="uid://u87bs8o77s8v" path="res://Fonts/VCR_OSD_MONO_1.001.ttf" id="3_p23kf"]
+[ext_resource type="FontFile" uid="uid://u87bs8o77s8v" path="res://Assets/Fonts/VCR_OSD_MONO_1.001.ttf" id="3_p23kf"]
 [ext_resource type="Texture2D" uid="uid://d1bkapx4wc0u" path="res://Assets/Sprites/ButtonBarHighALT.png" id="3_won51"]
 [ext_resource type="Texture2D" uid="uid://bo5i0nfkjdge8" path="res://Assets/Sprites/Background.png" id="3_y2tfy"]
 [ext_resource type="Texture2D" uid="uid://bsjf8uk288ves" path="res://Assets/Sprites/FrontDecor.png" id="4_dnosv"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" uid="uid://dr173wyeixf0" path="res://Scripts/InfoPanel.gd" id="8_l3cdh"]
 [ext_resource type="Texture2D" uid="uid://d2ewln4q3imxm" path="res://Assets/Icon_Items/Play.png" id="9_ry13m"]
 [ext_resource type="Texture2D" uid="uid://j3ofox7phxo8" path="res://Assets/Icon_Items/Stop.png" id="15_dnosv"]
+[ext_resource type="AudioStream" uid="uid://cis06d8gvyxgm" path="res://Assets/Sounds/click.wav" id="17_a7syu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dnosv"]
 shader = ExtResource("3_dnosv")
@@ -587,6 +588,9 @@ theme_override_font_sizes/font_size = 38
 text = "Sort By"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Click" type="AudioStreamPlayer" parent="." unique_id=203261688]
+stream = ExtResource("17_a7syu")
 
 [connection signal="pressed" from="Buttons/HBoxContainer/GodotToggle" to="BGenrePanel" method="_on_godot_toggle_pressed"]
 [connection signal="pressed" from="Buttons/HBoxContainer/UnityToggle" to="BGenrePanel" method="_on_unity_toggle_pressed"]

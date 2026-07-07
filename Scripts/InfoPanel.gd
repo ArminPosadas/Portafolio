@@ -3,7 +3,8 @@ extends Panel
 @onready var description_label: Label = $Descripcion/Label
 @onready var video_player: VideoStreamPlayer = $Video/VideoStreamPlayer
 @onready var animation_player: AnimationPlayer = $Transition
-@onready var video_counter_label: Label = $CurrentVideo/VideoCounterLabel  # Optional: show current video number
+@onready var video_counter_label: Label = $CurrentVideo/VideoCounterLabel
+@onready var sound_effect: AudioStreamPlayer = $"../Click"
 
 var _pending_item_id: String = ""
 var _pending_item_info: Dictionary = {}
@@ -26,9 +27,7 @@ func _ready() -> void:
 
 # Public method to show item details
 func show_item_details(item_id: String, item_info: Dictionary) -> void:
-	print("Show item details called for: ", item_info.get("Name", "Unknown"))
-	print("Active state: ", active)
-	
+	sound_effect.play()
 	_pending_item_id = item_id
 	_pending_item_info = item_info
 	
@@ -39,21 +38,16 @@ func show_item_details(item_id: String, item_info: Dictionary) -> void:
 		
 		if not active:
 			if animation_player.has_animation("move_info"):
-				print("Playing move_info animation")
 				_is_closing = false  # Reset closing flag
 				animation_player.play("move_info")
 			else:
-				print("ERROR: move_info animation not found!")
 				_update_info_panel_content(item_id, item_info)
 		else:
 			if animation_player.has_animation("hidden"):
-				print("Playing hidden animation")
 				animation_player.play("hidden")
 			else:
-				print("ERROR: hidden animation not found!")
 				_update_info_panel_content(item_id, item_info)
 	else:
-		print("ERROR: animation_player is null!")
 		_update_info_panel_content(item_id, item_info)
 
 func _on_transition_animation_finished(anim_name: String) -> void:
@@ -61,7 +55,6 @@ func _on_transition_animation_finished(anim_name: String) -> void:
 	
 	# If we're closing the panel, don't update content or set active to true
 	if _is_closing:
-		print("Skipping content update because panel is closing")
 		_is_closing = false  # Reset the flag
 		return
 	
@@ -85,8 +78,6 @@ func _on_transition_animation_finished(anim_name: String) -> void:
 			_pending_item_info = {}
 
 func _update_info_panel_content(item_id: String, item_info: Dictionary) -> void:
-	print("Updating info panel content for: ", item_info.get("Name", "Unknown"))
-	
 	# Store current item info for video navigation
 	_current_item_id = item_id
 	
@@ -145,7 +136,7 @@ func _load_video_at_index(index: int) -> void:
 		video_player.stream = null
 
 func _update_video_buttons() -> void:
-	# Get button references by path (since they're not @onready variables anymore)
+	# Get button references
 	var prev_button = get_node_or_null("InfoPanel/PrevVideoButton")
 	var next_button = get_node_or_null("InfoPanel/NextVideoButton")
 	
@@ -164,6 +155,7 @@ func _update_video_buttons() -> void:
 		next_button.disabled = true
 
 func _on_prev_video_pressed() -> void:
+	sound_effect.play()
 	if _video_list.is_empty():
 		return
 	
@@ -176,6 +168,7 @@ func _on_prev_video_pressed() -> void:
 	_update_video_buttons()
 
 func _on_next_video_pressed() -> void:
+	sound_effect.play()
 	if _video_list.is_empty():
 		return
 	
@@ -192,6 +185,7 @@ func hide_panel() -> void:
 	active = false
 
 func _on_close_pressed() -> void:
+	sound_effect.play()
 	_is_closing = true  # Set flag to prevent content update
 	animation_player.play_backwards("move_info")
 	active = false

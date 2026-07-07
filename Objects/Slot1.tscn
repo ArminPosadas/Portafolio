@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://civrifovioxv1"]
 
 [ext_resource type="Texture2D" uid="uid://qaoqkk6sla2l" path="res://Assets/Sprites/Sprite-0001.png" id="1_s6hse"]
-[ext_resource type="FontFile" uid="uid://u87bs8o77s8v" path="res://Fonts/VCR_OSD_MONO_1.001.ttf" id="2_ohmkr"]
+[ext_resource type="FontFile" uid="uid://u87bs8o77s8v" path="res://Assets/Fonts/VCR_OSD_MONO_1.001.ttf" id="2_ohmkr"]
 
 [node name="slot0" type="Button" unique_id=1588561096]
 offset_right = 160.0
