@@ -7,7 +7,11 @@ extends Button
 func _on_pressed() -> void:
 	click_effect.play()
 	if popup_window:
-		popup_window.show()
+		if popup_window.visible:
+			popup_window.move_to_center()
+			popup_window.grab_focus()
+		else:
+			popup_window.show()
 
 
 func _on_about_me_close_requested() -> void:

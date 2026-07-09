@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://d2ewln4q3imxm" path="res://Assets/Icon_Items/Play.png" id="9_ry13m"]
 [ext_resource type="Texture2D" uid="uid://j3ofox7phxo8" path="res://Assets/Icon_Items/Stop.png" id="15_dnosv"]
 [ext_resource type="AudioStream" uid="uid://cobcg3ro0kjb4" path="res://Assets/Sounds/click.ogg" id="17_a7syu"]
+[ext_resource type="LabelSettings" uid="uid://s8uc7h2u4rsm" path="res://Singletons/Text_Label_Outline.tres" id="17_epl82"]
 [ext_resource type="AudioStream" uid="uid://cdkswhas6newd" path="res://Assets/Sounds/focus.wav" id="18_uhu3g"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dnosv"]
@@ -140,6 +141,11 @@ _data = {
 &"hidden": SubResource("Animation_aap42"),
 &"move_info": SubResource("Animation_y2tfy")
 }
+
+[sub_resource type="LabelSettings" id="LabelSettings_epl82"]
+font_size = 35
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
 
 [node name="ProjectsComp" type="Control" unique_id=832354694]
 layout_mode = 3
@@ -499,6 +505,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_p23kf")
 theme_override_font_sizes/font_size = 20
+label_settings = ExtResource("17_epl82")
 autowrap_mode = 2
 
 [node name="Descripcion" type="Panel" parent="InfoPanel" unique_id=1664058769]
@@ -522,6 +529,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_p23kf")
 theme_override_font_sizes/font_size = 20
+label_settings = ExtResource("17_epl82")
 autowrap_mode = 2
 
 [node name="Video" type="Panel" parent="InfoPanel" unique_id=1196165693]
@@ -587,6 +595,7 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_p23kf")
 theme_override_font_sizes/font_size = 38
 text = "Sort By"
+label_settings = SubResource("LabelSettings_epl82")
 horizontal_alignment = 1
 vertical_alignment = 1
 

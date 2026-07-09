@@ -5,7 +5,7 @@
 	"Type": "Unreal",
 	"Genres": ["3DRPG"],
 	"Description": "A dialogue system i made in UE5 made from scratch using Data Tables to store, edit and short, dialogue, options and choices they can also interact with other Data Tables to short Data Tables per character, it also uses Structures to send that data to blueprints which can be used to give items, save choices or change animations/portraits for RPGs.",
-	"Videos": ["EDIT-DialogueSys-UE5.ogv", "EDIT-DialogueSys-UE5-2.ogv", "EDIT-DialogueSys-UE5-3.ogv"]
+	"Videos": ["EDIT-DialogueSys-UE5.ogv"]
   },
   "2": {
 	"Name": "Fighting",

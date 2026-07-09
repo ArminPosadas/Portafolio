@@ -32,6 +32,7 @@
 [ext_resource type="Texture2D" uid="uid://bglbwy0djd6m0" path="res://Assets/Sprites/GenericBG1.png" id="27_bxv1r"]
 [ext_resource type="Texture2D" uid="uid://dao47njjtvfsj" path="res://Assets/Sprites/MenusBarALT.png" id="28_3u44c"]
 [ext_resource type="Texture2D" uid="uid://d1bkapx4wc0u" path="res://Assets/Sprites/ButtonBarHighALT.png" id="29_bxv1r"]
+[ext_resource type="LabelSettings" uid="uid://s8uc7h2u4rsm" path="res://Singletons/Text_Label_Outline.tres" id="33_fipmv"]
 [ext_resource type="Texture2D" uid="uid://d2cbrl5qbiglx" path="res://Assets/Sprites/ProfilePicture.png" id="33_ow4wq"]
 [ext_resource type="AudioStream" uid="uid://cobcg3ro0kjb4" path="res://Assets/Sounds/click.ogg" id="34_ow4wq"]
 [ext_resource type="AudioStream" uid="uid://cdkswhas6newd" path="res://Assets/Sounds/focus.wav" id="35_o66vf"]
@@ -106,6 +107,11 @@ texture_margin_left = 5.0
 texture_margin_top = 5.0
 texture_margin_right = 5.0
 texture_margin_bottom = 5.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_o66vf"]
+font_size = 28
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ux20s"]
 texture = ExtResource("29_bxv1r")
@@ -487,6 +493,7 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_df05h")
 theme_override_font_sizes/font_size = 21
 text = "Armin Posadas Flores"
+label_settings = SubResource("LabelSettings_o66vf")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -516,6 +523,7 @@ theme_override_font_sizes/font_size = 21
 text = "I'm a recently graduated video game developer with experience in Game Design, Scripting, Visual Effects and even a little bit of sprite art.
 
 Always eager to learn new skills and take on fresh creative challenges. I adapt easily to working with large and small teams aswell as always keeping in contact with the rest of them for any needs"
+label_settings = ExtResource("33_fipmv")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
