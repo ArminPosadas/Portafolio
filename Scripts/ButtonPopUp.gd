@@ -31,3 +31,11 @@ func _on_cv_close_requested() -> void:
 
 func _on_mouse_entered() -> void:
 	hover_effect.play()
+
+
+func _on_proyects_pressed() -> void:
+	click_effect.play()
+	_on_about_me_close_requested()
+	_on_contacts_close_requested()
+	_on_cv_close_requested()
+	SceneTransition.change_scene("res://Scenes/ProjectsWindows.tscn")
