@@ -4,6 +4,11 @@ extends Button
 @onready var click_effect: AudioStreamPlayer = $"../../../../Click"
 @onready var hover_effect: AudioStreamPlayer = $"../../../../Hover"
 
+func _ready() -> void:
+	# Add popup window to group for easy access
+	if popup_window:
+		popup_window.add_to_group("popup_windows")
+
 func _on_pressed() -> void:
 	click_effect.play()
 	if popup_window:
@@ -13,29 +18,9 @@ func _on_pressed() -> void:
 		else:
 			popup_window.show()
 
-
-func _on_about_me_close_requested() -> void:
-	if popup_window:
-		popup_window.hide()
-
-
-func _on_contacts_close_requested() -> void:
-	if popup_window:
-		popup_window.hide()
-
-
-func _on_cv_close_requested() -> void:
-	if popup_window:
-		popup_window.hide()
-
-
 func _on_mouse_entered() -> void:
 	hover_effect.play()
 
-
 func _on_proyects_pressed() -> void:
 	click_effect.play()
-	_on_about_me_close_requested()
-	_on_contacts_close_requested()
-	_on_cv_close_requested()
 	SceneTransition.change_scene("res://Scenes/ProjectsWindows.tscn")
