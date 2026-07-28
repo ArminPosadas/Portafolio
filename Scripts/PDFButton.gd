@@ -12,7 +12,7 @@ func _ready():
 
 func _on_download_button_pressed():
 	download_button.disabled = true
-	download_button.text = "Copying..."
+	download_button.text = "Downloading..."
 	
 	var success = _copy_pdf_with_dirac()
 	
@@ -30,9 +30,6 @@ func _copy_pdf_with_dirac() -> bool:
 	var source_path = SOURCE_PDF
 	var filename = source_path.get_file()
 	var dest_path = DOWNLOAD_FOLDER + filename
-	
-	# Remove timestamp if you want to keep the original filename
-	# var dest_path = DOWNLOAD_FOLDER + "your-file.pdf"
 	
 	var dir = DirAccess.open("res://")
 	if dir == null:
