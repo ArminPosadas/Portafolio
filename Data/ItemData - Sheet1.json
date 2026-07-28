@@ -61,6 +61,6 @@
 	"Type": "Godot",
 	"Genres": ["WebPage"],
 	"Description": "A Web site made in Godot to display my contributions to other works, taking the look of an old operating system this proyect offers a dynamic way to insert proyects throught json files displaying icons, descriptions and even videos. A short function that allows you to see certain types of genres or games made by certain game engines.",
-	"Videos": []
+	"Videos": ["PortfolioVideo.ogv"]
   }
 }
